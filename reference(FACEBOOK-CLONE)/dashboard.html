@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Facebook - The Social Network</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="assets/css/style.css"/>
+        <link rel="stylesheet" href="assets/css/admin.css"/>
+        <style>
+            .box{
+                background: rgba(255,255,255,1);
+                padding: 10px 20px;
+                border-radius: 2px;
+                box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.4);
+            }
+        </style>
+
+    </head>
+    <body>
+        <div class="header no-shadow">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="logo">
+                            <h1>Facebook</h1>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <ul class="header-menu pull-right">
+                            <li><a href="#" class=""><img src = "assets/imgs/student.png" > 황재우</a></li>    
+                            <li><a href="#" class="">홈</a></li>    
+                            <li><a href="#" class="">친구 찾기</a></li>    
+                            <li><a href="#" class=""><img src = "assets/imgs/add-user (1).png" ></a></li>    
+                            <li><a href="#" class=""><img src = "assets/imgs/notification (1).png" ></a></li>
+                            <li><a href="#" class=""><img src = "assets/imgs/messenger.png" ></a></li>
+                            <li><a href="#" class=""><img src = "assets/imgs/info (1).png" ></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="container-fluid">
+                <div class="col-sm-3 left-sidebar">
+                    <ul>
+                        <li><a href="./dashboard.html" class="active"><img src = "assets/imgs/rss.png" >뉴스피드<img src = "assets/imgs/more.png" class="pull-right"> </a></li>
+                        <li><a href="./messenger.html" class="active"><img src = "assets/imgs/messenger (1).png" >Messenger</a></li>
+                        <b>바로가기</b>
+                        <li><a href="./settings.html" class="active">Settings</a></li>
+                        <li><a href="./index.html">Logout</a></li>
+                        <b>둘러보기</b>
+                        <li><a href="./messenger.html" class="active"><img src = "assets/imgs/group.png" >그룹</a></li>
+                        <li><a href="./messenger.html" class="active"><img src = "assets/imgs/flag.png" >페이지</a></li>
+                        <li><a href="./messenger.html" class="active"><img src = "assets/imgs/calendar.png" >이벤트</a></li>
+                        <b>만들기</b>
+                    </ul>
+                </div>
+                <div class="col-sm-6">
+                    <div class="post col-sm-12" id="post_1">
+                        <div class="row post-heading">
+                            <div class="col-sm-12">
+                                <a href="profile.html">
+                                    <img src="assets/imgs/user.png" class="profile-picture pull-left"/>
+                                    &nbsp;
+                                    <span class="post-user-name">신성환</span><br/>
+                                    &nbsp;
+                                    <small class="post-date text-mute">1시간</small>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row post-body">
+                            <div class="col-sm-12">
+                                맥주....
+                            </div>
+                        </div>
+                        <div class="row post-action">
+                            <ul class="post-action-menu">
+                                <li><a href="javascript:void(0);" class="text-mute" onclick="like(1);">좋아요</a></li>
+                                <li><a href="javascript:void(0);" class="text-mute" onclick="share(1);">공유하기</a></li>
+                                <li><a href="javascript:void(0);" class="text-mute" onclick="comment(1);">댓글</a></li>
+                                <li class="pull-right"><a href="#" class="text-mute"><span id="post_like_count_1">2142</span> 좋아요</a></li>
+                                <li class="pull-right"><a href="#" class="text-mute"><span id="post_comment_count_1">2172</span>개의 댓글</a></li>
+                                <li class="pull-right"><a href="#" class="text-mute"><span id="post_share_count_1">200</span>회 공유</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="post col-sm-12" id="post_2">
+                        <div class="row post-heading">
+                            <div class="col-sm-12">
+                                <a href="profile.html">
+                                    <img src="assets/imgs/user (1).png" class="profile-picture pull-left"/>
+                                    &nbsp;
+                                    <span class="post-user-name">강민정</span><br/>
+                                    &nbsp;
+                                    <small class="post-date text-mute">17분</small>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row post-body">
+                            <div class="col-sm-12">
+                                    안녕하세요. 포스트 작성 예시입니다 ㅇㅅㅇ
+
+                                    안녕하세요. 포스트 작성 예시입니다 ㅇㅅㅇ
+
+                                    안녕하세요. 포스트 작성 예시입니다 ㅇㅅㅇ
+                            </div>
+                        </div>
+                        <div class="row post-action">
+                            <ul class="post-action-menu">
+                                <li><a href="javascript:void(0);" class="text-mute" onclick="like(2);">좋아요</a></li>
+                                <li><a href="javascript:void(0);" class="text-mute" onclick="share(2);">공유하기</a></li>
+                                <li><a href="javascript:void(0);" class="text-mute" onclick="comment(2);">댓글</a></li>
+                                <li class="pull-right"><a href="#" class="text-mute"><span id="post_like_count_2">2142</span> 좋아요</a></li>
+                                <li class="pull-right"><a href="#" class="text-mute"><span id="post_comment_count_2">2172</span>개의 댓글</a></li>
+                                <li class="pull-right"><a href="#" class="text-mute"><span id="post_share_count_2">200</span>회 공유</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="post col-sm-12" id="post_3">
+                        <div class="row post-heading">
+                            <div class="col-sm-12">
+                                <a href="profile.html">
+                                    <img src="assets/imgs/user (2).png" class="profile-picture pull-left"/>
+                                    &nbsp;
+                                    <span class="post-user-name">설훈</span><br/>
+                                    &nbsp;
+                                    <small class="post-date text-mute">9월 27일 오후 9:13</small>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row post-body">
+                            <div class="col-sm-12">
+                                자바스크립트 학습을 시작합니다.
+                            </div>
+                        </div>
+                        <div class="row post-action">
+                            <ul class="post-action-menu">
+                                    <li><a href="javascript:void(0);" class="text-mute" onclick="like(3);">좋아요</a></li>
+                                    <li><a href="javascript:void(0);" class="text-mute" onclick="share(3);">공유하기</a></li>
+                                    <li><a href="javascript:void(0);" class="text-mute" onclick="comment(3);">댓글</a></li>
+                                    <li class="pull-right"><a href="#" class="text-mute"><span id="post_like_count_3">2124</span> 좋아요</a></li>
+                                    <li class="pull-right"><a href="#" class="text-mute"><span id="post_comment_count_3">2112</span>개의 댓글</a></li>
+                                    <li class="pull-right"><a href="#" class="text-mute"><span id="post_share_count_3">202</span>회 공유</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="post col-sm-12" id="post_4">
+                        <div class="row post-heading">
+                            <div class="col-sm-12">
+                                <a href="profile.html">
+                                    <img src="assets/imgs/man.png" class="profile-picture pull-left"/>
+                                    &nbsp;
+                                    <span class="post-user-name">NONE</span><br/>
+                                    &nbsp;
+                                    <small class="post-date text-mute">9월 20일 오후 8:14</small>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row post-body">
+                            <div class="col-sm-12">
+                                NOTHING...
+                            </div>
+                        </div>
+                        <div class="row post-action">
+                            <ul class="post-action-menu">
+                                    <li><a href="javascript:void(0);" class="text-mute" onclick="like(4);">좋아요</a></li>
+                                    <li><a href="javascript:void(0);" class="text-mute" onclick="share(4);">공유하기</a></li>
+                                    <li><a href="javascript:void(0);" class="text-mute" onclick="comment(4);">댓글</a></li>
+                                    <li class="pull-right"><a href="#" class="text-mute"><span id="post_like_count_4">0</span> 좋아요</a></li>
+                                    <li class="pull-right"><a href="#" class="text-mute"><span id="post_comment_count_4">0</span>개의 댓글</a></li>
+                                    <li class="pull-right"><a href="#" class="text-mute"><span id="post_share_count_4">0</span>회 공유</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-3 chat-users">
+                    <div class="row">
+                        <h4></h4>알 수도 있는 사람</h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 chat-user online">
+                            <a href="#">
+                                <img src="assets/imgs/user (1).png" class="pull-left"/>
+                                &nbsp;
+                                김태희
+                            </a>
+                        </div>
+                        <div class="col-sm-12 chat-user online">
+                            <a href="#">
+                                <img src="assets/imgs/user (2).png" class="pull-left"/>
+                                &nbsp;
+                                기호건
+                            </a>
+                        </div>
+                        <div class="col-sm-12 chat-user online">
+                            <a href="#">
+                                <img src="assets/imgs/user.png" class="pull-left"/>
+                                &nbsp;
+                                류승준
+                            </a>
+                        </div>
+                        <div class="col-sm-12 chat-user">
+                            <a href="#">
+                                <img src="assets/imgs/man.png" class="pull-left"/>
+                                &nbsp;
+                                최지수
+                            </a>
+                        </div>
+                        <div class="col-sm-12 chat-user online">
+                            <a href="#">
+                                <img src="assets/imgs/boy.png" class="pull-left"/>
+                                &nbsp;
+                                김애리
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer no-shadow">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12">
+                        &copy; Facebook 2017.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
