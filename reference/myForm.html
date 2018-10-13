@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="myForm.css">
+</head>
+<body>
+
+<h2>반응형 웹</h2>
+<p>가로길이가 600px 이하로 줄어들면 모바일 화면에 최적화됩니다.</p>
+
+<div class="container">
+    <h1>새 계정 만들기</h1>
+    계정을 만드려면 양식을 작성하십시오.  반응형임을 보이기 위해 Submit 버튼을 작게 구현했습니다..
+    <a href="https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_signup_form_modal">[참조]</a>
+     
+    <hr>
+
+  <form action="/action_page.php">
+    <label for="e-mail"><b>e-mail</b></label>
+
+    <div class="row">
+        <input type="text" id="e-mail" name="e-mail" placeholder="Enter E-mail.." required>
+    </div>
+
+
+    <label for="psw"><b>Password</b></label>
+    <div class="row">
+            <input type="password" placeholder="Enter Password" name="psw" required>
+    </div>
+
+
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <div class="row">
+            <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+    </div>
+    
+    <hr>
+    <p>계정을 생성하면 <a href="#">이용 약관 및 개인 정보 보호 정책</a>에 동의하게됩니다.</p>
+
+    
+    <label>
+            <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+    </label>
+    <div class="row">
+      <input type="submit" value="Submit">
+    </div>
+          <div class="container signin">
+        <p>계정이 있으신가요? 그렇다면 <a href="#">로그인하기</a></p>
+      </div>
+  </form>
+</div>
+
+</body>
+</html>
