@@ -1,0 +1,42 @@
+[Song_Order]
+-Store ID	int		FK
+-ID		    int		PK
+-Time		timestamp
+-Title		charfield
+-Singer		charfield
+-Message    textfield	
+-Play		boolean			//True: 실행됨
+-Delete		boolean			//True: 실행 안하고 삭제
+
+[Store]
+-Store ID	int		PK
+-Delay Time	int			    //분단위
+
+
+==========손님 필수=============
+전송
+- 가수, 제목, 메시지 입력
+
+
+==========업주 필수=============
+메뉴 버튼
+- 
+
+초기화버튼
+- 일괄 삭제
+
+삭제버튼
+- 하나하나 삭제
+
+멜론/벅스/지니 선택
+- 
+
+최근 실행곡
+- 최근 실행한 곡들 리스트
+
+예상 소요 시간 설정
+- 업주가 지정
+
+
+=============부가=============
+
