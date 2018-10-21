@@ -6,20 +6,25 @@ from .forms import SongForm
 def song_list(request, pk):
     pass
 
-def add(request, pk):
-    post = get_object_or_404(Store, pk=pk)
+def order_song(request, pk):
+    store = get_object_or_404(Store, pk=pk)
     if request.method == "POST":
         form = SongForm(request.POST)
         if form.is_valid():
             song = form.save(commit=False)
             song.store = store
             song.save()
-            return redirect('post_detail', pk=post.pk)
+            return render(request, 'main/order_completed.html', {'store': store})
+            #return redirect('order_completed', pk=post.pk)
     else:
         form = SongForm()
-    return render(request, 'main/add_comment_to_post.html', {'form': form})
+    return render(request, 'main/order_song.html', {'form': form})
 
-def play(request, pk):
+def order_completed(request, pk):
+    store = get_object_or_404(Store, pk=pk)
+    return render(request, 'main/order_song.html', {'store': store})
+
+def play_song(request, pk):
     pass
 
 def delete_one(request, pk):
