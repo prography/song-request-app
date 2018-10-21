@@ -1,0 +1,9 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h3> 대기시간은 {{ store.delay }} 분입니다. </h3>
+    <form method="POST" class="song-form">{% csrf_token %}
+        <a class="btn btn-default" href="{% url 'order_song' pk=store.pk %}">완료</a>
+        <a class="btn btn-default" href="{% url 'song_list' pk=store.pk %}">신청리스트</a>
+    </form>
+{% endblock %}

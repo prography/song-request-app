@@ -1,4 +1,4 @@
-#!/home/gun/Prograpy/Web/SongRequest/myvenv/bin/python
+#!/home/gun/Prography/Web/myproject/myenv/bin/python3.6
 from django.core import management
 
 if __name__ == "__main__":

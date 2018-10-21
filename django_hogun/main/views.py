@@ -2,9 +2,12 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Song, Store
 from .forms import SongForm
 
+
 # Create your views here.
-def song_list(request, pk):
-    pass
+def song_list(request, pk=1):
+    store = get_object_or_404(Store, pk=pk)
+    return render(request, 'main/song_list.html', {'store': store})
+
 
 def order_song(request, pk):
     store = get_object_or_404(Store, pk=pk)
@@ -14,27 +17,32 @@ def order_song(request, pk):
             song = form.save(commit=False)
             song.store = store
             song.save()
-            return render(request, 'main/order_completed.html', {'store': store})
-            #return redirect('order_completed', pk=post.pk)
+            return redirect('order_completed', pk=store.pk)
     else:
         form = SongForm()
     return render(request, 'main/order_song.html', {'form': form})
 
+
 def order_completed(request, pk):
     store = get_object_or_404(Store, pk=pk)
-    return render(request, 'main/order_song.html', {'store': store})
+    return render(request, 'main/order_completed.html', {'store': store})
+
 
 def play_song(request, pk):
     pass
 
+
 def delete_one(request, pk):
     pass
+
 
 def delete_all(request, pk):
     pass
 
+
 def set_delay(request, pk):
     pass
+
 
 def set_site(request, pk):
     pass

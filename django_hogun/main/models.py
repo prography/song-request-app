@@ -3,7 +3,7 @@ from django.utils import timezone
 
 # Create your models here.
 class Song(models.Model):
-    store = models.ForeignKey('main.Store')
+    store = models.ForeignKey('main.Store', related_name='songs')
     created_at = models.DateTimeField(default=timezone.now)
     title = models.CharField(max_length=50)
     singer = models.CharField(max_length=50)

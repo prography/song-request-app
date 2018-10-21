@@ -3,6 +3,7 @@ from . import views
 urlpatterns = [
     #url(r'^$', views.sign_up, name='sign_up'),
     #url(r'^login/$', views.sign_in, name='sign_in'),
+    url(r'^$', views.song_list, name='first_store'),
     url(r'^store/(?P<pk>\d+)/$', views.song_list, name='song_list'),
     url(r'^store/(?P<pk>\d+)/song/order/$', views.order_song, name='order_song'),
     url(r'^store/(?P<pk>\d+)/song/complete/$', views.order_completed, name='order_completed'),
