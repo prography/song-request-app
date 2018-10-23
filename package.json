@@ -1,0 +1,18 @@
+{
+  "name": "spa-example",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "link": "serve -p 5001 1_link",
+    "ajax": "serve -p 5002 2_ajax",
+    "hash": "serve -p 5003 3_hash",
+    "pjax": "serve -p 5004 4_pjax",
+    "exam": "serve -p 5005 5_exam"
+  },
+  "devDependencies": {
+    "eslint": "^4.5.0",
+    "eslint-config-airbnb-base": "^11.3.2",
+    "eslint-plugin-html": "^3.2.0",
+    "eslint-plugin-import": "^2.7.0"
+  }
+}
