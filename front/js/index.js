@@ -35,8 +35,8 @@
     'service': function () {
       get('/data/service.json').then(render);
     },
-    'about': function () {
-      get('/data/about.html').then(renderHtml);
+    'settings': function () {
+      get('/data/host-setting-window.html').then(renderHtml);
     },
     otherwise() {
       root.innerHTML = `${location.hash} Not Found`;
