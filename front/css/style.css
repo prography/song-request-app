@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+nav {
+  height: 70px;
+  background-color: #FFFFFF;
+  
+  border-bottom: 1px;
+  border-style: solid;
+  border-color: #FFFFFF;
+  border-bottom-color: #D1D1D1;
+}
+
+ul > li {
+  display: inline-block;
+  padding: 0 60px; 
+}
+li > a {
+  line-height: 60px;
+  color: #397b9d;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 30px;
+  text-transform: uppercase;
+  list-style: none;
+  cursor: pointer;
+  opacity: 1.0;
+}
+
+li > a:hover {
+  opacity: 0.7;
+}
+
+li > b {
+  line-height: 60px;
+  color: #397b9d;
+  text-decoration: none;  
+  font-size: 20px;
+  text-transform: uppercase;
+  list-style: none;
+  cursor: pointer;
+  opacity: 1.0;
+}
+
+
+.app-root {
+  padding: 20px;  
+}
+
+.app-root > nav {
+  border-color: #FFFFFF;
+}
+
+.app-root > nav > ul > li > a{
+  opacity: 0.5;
+}
+
+.app-root > nav > ul > li > a:hover{
+  opacity: 1.0;
+}
+
+.app-root > h1 {
+  margin-bottom: 20px;
+}
+
+.time-setting {
+
+  float: left;
+  line-height: 60px;
+  color: #397b9d;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+  text-transform: uppercase;
+  list-style: none;
+  cursor: pointer;
+  opacity: 1.0;
+
+}
+
+.setimg {
+  float:right;
+  margin: 15px;
+}
+
+.setimg > :hover{
+  opacity: 0.5;
+}
+
+button,
+button::after {
+  -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+
+button {
+  background:#FF1D23;
+  border: 3px solid #fff;
+  border-radius: 40px;
+  color: #fff;
+  display: block;
+  font-size: 1.6em;
+  font-weight: bold;
+  margin: 1em auto;
+  padding: 0.5em 2em;
+  position:relative;  
+  left: 50%;
+  top: 80%;
+  text-transform: uppercase;
+}
+
+button:hover{
+  background:#FFFFFF;
+  color:#FF1D23;
+  opacity: 0.5;
+}

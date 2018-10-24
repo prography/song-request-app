@@ -1,0 +1,14 @@
+{
+  "name": "song-request-app",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {    
+    "hash": "serve -p 5003 front"    
+  },
+  "devDependencies": {
+    "eslint": "^4.5.0",
+    "eslint-config-airbnb-base": "^11.3.2",
+    "eslint-plugin-html": "^3.2.0",
+    "eslint-plugin-import": "^2.7.0"
+  }
+}
