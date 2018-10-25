@@ -1,16 +1,16 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
-    <a class="btn btn-default" href="{% url 'order_song' pk=store.pk %}">노래 신청</a>
-    {% for song in store.songs.all %}
+    <a class="btn btn-default" href="{% url 'order_song' pk=pk %}">노래 신청</a>
+    {% for song in songs %}
         <div class="song">
-            <div class="date">
-                <h4>
-                    {{ song.created_at }} <br>
-                    [제목]:{{ song.title }}, [가수]:{{ song.singer }} <br>
-                    [메시지]:{{ song.message }} <br>
-                </h4>
-            </div>
+            <h4>
+                <#{{ song.id }}> {{ song.created_at }} <br>
+                제목: {{ song.title }} <br>
+                가수: {{ song.singer }} <br>
+                메시지: {{ song.message }} <br>
+            </h4>
+            <hr>
         </div>
     {% endfor %}
 {% endblock %}
