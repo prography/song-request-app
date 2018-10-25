@@ -31,10 +31,7 @@
     },
     'end': function () {
       get('/data/host-end-request-window.html').then(renderHtml);
-    },
-    'service': function () {
-      get('/data/service.json').then(render);
-    },
+    },    
     'settings': function () {
       get('/data/host-setting-window.html').then(renderHtml);
     },
