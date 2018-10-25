@@ -38,6 +38,9 @@
     'settings': function () {
       get('/data/host-setting-window.html').then(renderHtml);
     },
+    'empty': function () {
+      get('/data/host-empty-window.html').then(renderHtml);
+    },
     otherwise() {
       root.innerHTML = `${location.hash} Not Found`;
     }
