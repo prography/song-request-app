@@ -221,25 +221,38 @@ input > button {
 
 input.search-btn {
   background: url( "../assets/img/search.jpg" ) no-repeat;
+  border: none;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
 }
 
 
 input.delete-btn {
   background: url( "../assets/img/x-button.jpg" ) no-repeat;  
+  border: none;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
 }
 
 input.rollback-btn {
   background: url( "../assets/img/back.jpg" ) no-repeat;
+  border: none;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
   padding-top: 3px;  
 }
 
-input.search-btn {
-  background: url( "../assets/img/search.jpg" ) no-repeat;
+input.save-btn {
+  background: url( "../assets/img/save-btn.jpg" ) no-repeat;
+  border: none;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
 }
 
-input.search-btn {
-  background: url( "../assets/img/search.jpg" ) no-repeat;
-}
 
 input.modiLocation {  
   margin-left: 150px;
