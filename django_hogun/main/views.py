@@ -7,8 +7,7 @@ from .forms import SongForm
 def song_list(request, pk=1):
     store = get_object_or_404(Store, pk=pk)
     songs = store.songs.all().filter(is_deleted=False, is_played=False)
-    return render(request, 'main/song_list2.html', {'songs': songs, 'pk': pk})
-    #return render(request, 'main/song_list.html', {'store': store})
+    return render(request, 'main/song_list.html', {'songs': songs, 'pk': pk})
 
 
 def order_song(request, pk):
