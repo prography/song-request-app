@@ -1,5 +1,7 @@
 (function () {
   const root = document.querySelector('.app-root');
+  
+  const empty = document.body;
 
   function render(data) {
     const json = JSON.parse(data);
@@ -8,6 +10,10 @@
 
   function renderHtml(html) {
     root.innerHTML = html;
+  }
+
+  function guestRender(html) {
+    empty.innerHTML = html;
   }
 
   function get(url) {
@@ -38,6 +44,12 @@
     'empty': function () {
       get('/data/host-empty-window.html').then(renderHtml);
     },
+    'guest-start': function () {
+      get('/data/guest-request-start-window.html').then(guestRender);
+    },
+    'guest-end': function () {
+      get('/data/guest-request-end-window.html').then(guestRender);
+    },
     otherwise() {
       root.innerHTML = `${location.hash} Not Found`;
     }
@@ -59,3 +71,4 @@
   // 새로고침이 클릭되었을 때, 웹페이지가 처음 로딩되었을 때, 현 페이지(예를들어 loclahost:5003/#service)를 요청하므로 index.html이 재로드되고 DOMContentLoaded 이벤트가 발생하여 router가 호출된다.
   window.addEventListener('DOMContentLoaded', router);
 }());
+
