@@ -1,9 +1,10 @@
 from django.db import models
 from django.utils import timezone
 
+
 # Create your models here.
 class Song(models.Model):
-    store = models.ForeignKey('main.Store', related_name='songs')
+    store = models.ForeignKey('main.Store', related_name='songs', default=1)
     created_at = models.DateTimeField(default=timezone.now)
     title = models.CharField(max_length=50)
     singer = models.CharField(max_length=50)
@@ -18,5 +19,7 @@ class Store(models.Model):
         (2, '벅스'),
     )
     store_name = models.CharField(max_length=50)
-    delay = models.IntegerField()
+    delay_time = models.IntegerField(default=60)
     music_site = models.IntegerField(choices=TYPE1)
+    period_order = models.IntegerField(default=0)
+    period_complete = models.IntegerField(default=0)

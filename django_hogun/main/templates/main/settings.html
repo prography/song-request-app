@@ -1,0 +1,30 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <form method="POST" class="song-form" >{% csrf_token %}
+        <div>
+            <label for="delay_time">예상 소요 시간</label> <br>
+            <input type="radio" id="delay_time" name="delay_time" value="30"/>30분
+            <input type="radio" id="delay_time" name="delay_time" value="60"/>60분
+        </div> <br>
+        <div>
+            <label for="music_site">음원 사이트</label> <br>
+            <input type="radio" id="music_site" name="music_site" value=1 />멜론
+            <input type="radio" id="music_site" name="music_site" value=2 />벅스
+            <input type="radio" id="music_site" name="music_site" value=3 />지니
+        </div> <br>
+        <div>
+            <label for="period_order">신청_초기화</label> <br>
+            <input type="radio" id="period_order" name="period_order" value=2 />2시간
+            <input type="radio" id="period_order" name="period_order" value=4 />4시간
+            <input type="radio" id="period_order" name="period_order" value=6 />6시간
+        </div> <br>
+        <div>
+            <label for="period_order">완료_초기화</label> <br>
+            <input type="radio" id="period_complete" name="period_complete" value=2 />2시간
+            <input type="radio" id="period_complete" name="period_complete" value=4 />4시간
+            <input type="radio" id="period_complete" name="period_complete" value=6 />6시간
+        </div>
+        <button type="submit" class="save btn btn-default">Send</button>
+    </form>
+{% endblock %}

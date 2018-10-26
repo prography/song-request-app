@@ -2,7 +2,6 @@
 
 {% block content %}
     <a class="btn btn-default" href="{% url 'order_song' pk=pk %}">노래 신청</a>
-    <a class="btn btn-default" href="{% url 'delete_all' pk=pk %}">전체 삭제</a>
     <a class="btn btn-default" href="{% url 'set_settings' pk=pk %}">설정 변경</a> <br><br>
     <a class="btn btn-default" href="{% url 'song_list' pk=pk %}">신청리스트</a>
     <a class="btn btn-default" href="{% url 'complete_list' pk=pk %}">완료리스트</a>
@@ -14,8 +13,7 @@
                 제목: {{ song.title }} <br>
                 가수: {{ song.singer }} <br>
                 메시지: {{ song.message }} <br>
-                <a class="btn btn-default" href="{% url 'play_song' pk=song.id %}">플레이</a>
-                <a class="btn btn-default" href="{% url 'delete_one' pk=song.id %}">삭제</a>
+                <a class="btn btn-default" href="{% url 'restore_one' pk=song.id %}">복원</a>
             </h4>
             <hr>
         </div>

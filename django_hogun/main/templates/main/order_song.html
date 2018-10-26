@@ -2,8 +2,12 @@
 
 {% block content %}
     <h1>New Song</h1>
-    <form method="POST" class="song-form">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Send</button>
+    <form method="POST" class="song-form" >{% csrf_token %}
+        <h4>
+            제목 <input id="title" type="text" name="title" > <br>
+            가수 <input id="singer" type="text" name="singer" > <br>
+            메시지 <input id="message" type="text" name="message" > <br>
+            <button type="submit" class="save btn btn-default">Send</button>
+        </h4>
     </form>
 {% endblock %}
