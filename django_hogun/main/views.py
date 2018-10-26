@@ -1,24 +1,47 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Song, Store
+from django.utils import timezone
 from .forms import SongForm
 
 
 # Create your views here.
 def song_list(request, pk=1):
     store = get_object_or_404(Store, pk=pk)
-    songs = store.songs.all().filter(is_deleted=False, is_played=False)
-    return render(request, 'main/song_list.html', {'songs': songs, 'pk': pk})
+    if store.period_order > 0:
+        time_from = timezone.now() - timezone.timedelta(hours=store.period_order)
+        songs = store.songs.all().filter(is_deleted=False, is_played=False, created_at__gte=time_from).order_by('-created_at')
+    else:
+        songs = store.songs.all().filter(is_deleted=False, is_played=False).order_by('-created_at')
+
+    url1 = ''
+    url2 = ''
+    if store.music_site == 1:
+        url1 = "https://www.melon.com/search/total/index.htm?q="
+        url2 = "&section=&searchGnbYn=Y&kkoSpl=Y&kkoDpType=&linkOrText=T&ipath=srch_form"
+    elif store.music_site == 2:
+        url1 = "https://music.bugs.co.kr/search/integrated?q="
+        url2 = ""
+    elif store.music_site == 3:
+        url1 = "http://www.genie.co.kr/search/searchMain?query="
+        url2 = ""
+
+    return render(request, 'main/song_list.html', {'songs': songs, 'url1': url1, 'url2': url2, 'pk': pk})
 
 
 def complete_list(request, pk=1):
     store = get_object_or_404(Store, pk=pk)
-    songs = store.songs.all().filter(is_deleted=False, is_played=True)
+    if store.period_complete > 0:
+        time_from = timezone.datetime.now() - timezone.timedelta(hours=store.period_complete)
+        print(time_from)
+        songs = store.songs.all().filter(is_deleted=False, is_played=True, created_at__gte=time_from).order_by('-created_at')
+    else:
+        songs = store.songs.all().filter(is_deleted=False, is_played=True).order_by('-created_at')
     return render(request, 'main/complete_list.html', {'songs': songs, 'pk': pk})
 
 
 def delete_list(request, pk=1):
     store = get_object_or_404(Store, pk=pk)
-    songs = store.songs.all().filter(is_deleted=True, is_played=False)
+    songs = store.songs.all().filter(is_deleted=True, is_played=False).order_by('-created_at')
     return render(request, 'main/complete_list.html', {'songs': songs, 'pk': pk})
 
 

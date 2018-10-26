@@ -14,7 +14,9 @@
                 제목: {{ song.title }} <br>
                 가수: {{ song.singer }} <br>
                 메시지: {{ song.message }} <br>
-                <a class="btn btn-default" href="{% url 'play_song' pk=song.id %}">플레이</a>
+                실행여부: {{ song.is_played }} <br>
+                삭제여부: {{ song.is_deleted }} <br>
+                <a class="btn btn-default" href="{{ url1 }} {{ song.title }}+{{song.singer}}{{url2}}" onclick="location.href='{% url 'play_song' pk=song.id %}';" target="_blank">플레이</a>
                 <a class="btn btn-default" href="{% url 'delete_one' pk=song.id %}">삭제</a>
             </h4>
             <hr>

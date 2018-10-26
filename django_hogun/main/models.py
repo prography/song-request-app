@@ -17,6 +17,7 @@ class Store(models.Model):
     TYPE1 = (
         (1, '멜론'),
         (2, '벅스'),
+        (3, '지니'),
     )
     store_name = models.CharField(max_length=50)
     delay_time = models.IntegerField(default=60)

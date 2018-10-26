@@ -13,6 +13,8 @@
                 제목: {{ song.title }} <br>
                 가수: {{ song.singer }} <br>
                 메시지: {{ song.message }} <br>
+                실행여부: {{ song.is_played }} <br>
+                삭제여부: {{ song.is_deleted }} <br>
                 <a class="btn btn-default" href="{% url 'restore_one' pk=song.id %}">복원</a>
             </h4>
             <hr>
