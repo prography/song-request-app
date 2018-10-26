@@ -1,7 +1,3 @@
-* {
-    font-family: 'Nanum Gothic', 'Merriweather', 'PT Serif', Georgia, 'Times New Roman', serif ;
-    box-sizing: border-box;
-}
 
 body {
     background-color: #f2f2f2;
@@ -13,14 +9,6 @@ hr {
     border: 1px solid #f1f1f1;
     margin-bottom: 25px;
 }
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 15px;
-    margin: auto;
-    display: inline-block;
-    border: none;
-    background: #ffffff;
-}
 
 input[type=text], select, textarea {
     width: 100%;
@@ -29,10 +17,9 @@ input[type=text], select, textarea {
 }
 
 label {
-    padding: 12px 12px 12px 0;
-    display: inline-block;
-    font-size: 20px;
-    color: #3A8EFF;
+    color: #2290c3 ;
+    font-size: 79pt;
+    text-align: center;
 }
 
 input[type=submit] {
@@ -53,6 +40,15 @@ input[type=submit] {
 
 input[type=submit]:hover {
     background-color: #8bcae7;
+}
+
+
+.lightWeight {
+    font-weight: 300;
+}
+
+.boldWeight {
+    font-weight: 800;
 }
 
 .container {
@@ -91,3 +87,4 @@ input[type=submit]:hover {
         margin-top: 0;
     }
 }
+
