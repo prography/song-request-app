@@ -16,10 +16,41 @@ input[type=text], select, textarea {
     border-bottom: 1px solid #666666;    
 }
 
-label {
-    color: #2290c3 ;
-    font-size: 79pt;
-    text-align: center;
+label{
+    font-weight: 800;
+    color: #2290c3;
+    font-size: 56pt;
+    vertical-align:middle;
+    text-align:center;
+}
+
+div > a {
+    font-weight: 400;
+    font-size: 39pt;
+    color: #1279a9;
+    text-decoration: none;
+}
+
+div > form{
+    margin-top: 5em;
+}
+div > form > b {
+    font-weight: 800;
+    font-size: 30.5pt;
+    color: #2290c3;
+}
+
+input[type=text] {
+
+    margin-bottom: 5em;
+    border-bottom-color: #D1D1D1;
+    border-right:0px;
+    border-top:0px;
+    border-left:0px;
+    border-bottom:1px;
+    border-style: solid;
+
+
 }
 
 input[type=submit] {
@@ -29,7 +60,7 @@ input[type=submit] {
     color: white;
     padding: 12px 20px;
     margin-left: 10%;
-    margin-top: 70%;
+    margin-top: 6em;
     border: none;
     border-radius: 50px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
