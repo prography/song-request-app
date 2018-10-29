@@ -1,0 +1,40 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <header>
+        <nav class="lower-nav">
+            <button type="button" onclick="{% url 'main:song_return' song_id=s.pk %}">신청 플레이리스트</button>
+            <button type="button" class="selected" onclick="setURL('#end')">완료 플레이리스트</button>
+            <div class="lower-nav-button-group">
+                <button type="button" class="selected">시간순</button>
+                <button type="button">날짜순</button>
+                <button type="button">신청순</button>
+            </div>
+        </nav>
+    </header>
+
+    <div id="main">
+        <article>
+            {% for s in song %}
+                <div class="song-element">
+                    <div>{{s.singer}} - {{s.title}}</div>
+                    <div>{{s.order_time|date:"Y .m .d"}}</div>
+                    <div>
+                        <a href="{% url 'main:song_return' song_id=s.pk %}">
+                            <button type="button" class="refresh">
+                                되돌리기
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </article>
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+    <a href="{% url 'main:song_all_delete' store_id=store.id %}">
+        <button class ="init">초기화</button>
+    </a>
+{% endblock %}
