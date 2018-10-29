@@ -8,48 +8,142 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>SPA</title>
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
-  <style>
-    .song-element>div:last-child>a>.search{
-      background: url( "{% static 'images/search.jpg' %}" ) no-repeat;
-      border: none;
-      width: 32px;
-      height: 32px;
-      cursor: pointer;
-    }
-    .song-element>div:last-child>a>.delete {
-      background: url( "{% static 'images/x-button.jpg' %}" ) no-repeat;  
-      border: none;
-      width: 32px;
-      height: 32px;
-      cursor: pointer;
-    }
-    .song-element>div:last-child>a>.refresh{
-      background: url( "{% static 'images/back.jpg'%}" ) no-repeat;
-      border: none;
-      width: 32px;
-      height: 32px;
-      cursor: pointer;
-      padding-top: 3px;
-    }
-  </style>
 </head>
 <body>
-  <nav>
-    <ul>
-      <li><a href="#">밤과 음악사이</a></li>
-        <a href="#settings" class="setimg">
-          <img class="image" src = "{% static 'images/settings.png' %}" >                            
-        </a>      
-    </ul>
+  <nav class="upper-nav">
+    <div>
+      <a href="#" class="nav-text">
+        밤과 음악사이
+      </a>
+      <a href="#settings" class="setimg" id="set_btn">
+        <img class="image" src = "{% static 'images/settings.png' %}" >                            
+      </a>
+    </div>
   </nav>
+
   <div class="app-root">
       {% block content %}
       {% endblock %}
   </div>
+
+  <div class="modal-background hide">
+      <button class="modal-close" id="close_modal"><img src="{% static 'images/close.png'%}"></button>
+      <form method="POST" action="{% url 'main:store_set' 1 %}">
+        {% csrf_token %}
+        <div class="modal">
+          <div class="button-wrap">
+            <div class="section-title">예상소요시간</div>
+            <button type="button" class="est-time text-btn selected" name="delay" value="30">30분</button>
+            <button type="button" class="est-time text-btn" name="delay" value="60">60분</button>
+          </div>
+          <div class="button-wrap">
+            <div class="section-title">검색 사이트</div>
+            <button type="button" class="searching-site img-btn melon selected" name="site" value="1"></button>
+            <button type="button" class="searching-site img-btn genie" name="site" value="2"></button>
+            <button type="button" class="searching-site img-btn bugs" name="site" value="3"></button>
+          </div>
+          <div class="button-wrap">
+            <div class="section-title">초기화 시간</div>
+            <div class="subtitle">신청 플레이리스트</div>
+            <button type="button" class="req-init-time text-btn selected" name="reset_list" value="2">2시간</button>
+            <button type="button" class="req-init-time text-btn" name="reset_list" value="4">4시간</button>
+            <button type="button" class="req-init-time text-btn" name="reset_list" value="6">6시간</button>
+    
+            <div class="subtitle">완료 플레이리스트</div>
+            <button type="button" class="finished-init-time text-btn selected" name="played" value="2">2시간</button>
+            <button type="button" class="finished-init-time text-btn" name="played" value="4">4시간</button>
+            <button type="button" class="finished-init-time text-btn" name="played" value="6">6시간</button>
+          </div>
+          <button class="save" type="submit">저 &nbsp;장</button>
+        </div>
+      </form>
+  </div>
 </body>
-<footer>
-    {% block footer %}
-    {% endblock %}
-</footer>
 </html>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.slim.js"
+  integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
+  crossorigin="anonymous"></script>
+<script>
+  function setURL(url){
+      location.href = url
+  }
+
+  let estTimeClass = document.getElementsByClassName("est-time");
+
+  let estTimeBtn = function() {
+      let attribute = this.getAttribute("value");
+      document.getElementById('est_time').value = attribute;
+  };
+
+  for (let i = 0; i < estTimeClass.length; i++) {
+      estTimeClass[i].addEventListener('click', estTimeBtn, false);
+  }
+
+
+  let searchingClass = document.getElementsByClassName("searching-site");
+
+  let searchingBtn = function() {
+      let attribute = this.getAttribute("value");
+      document.getElementById('searching_site').value = attribute;
+  };
+
+  for (let i = 0; i < searchingClass.length; i++) {
+      searchingClass[i].addEventListener('click', searchingBtn, false);
+  }
+
+
+  let reqClass = document.getElementsByClassName("req-init-time");
+
+  let reqBtn = function() {
+      let attribute = this.getAttribute("value");
+      document.getElementById('req_init_time').value = attribute;
+  };
+
+  for (let i = 0; i < reqClass.length; i++) {
+      reqClass[i].addEventListener('click', reqBtn, false);
+  }
+
+  let finishClass = document.getElementsByClassName("finished-init-time");
+
+  let finishBtn = function() {
+      let attribute = this.getAttribute("value");
+      document.getElementById('finished_init_time').value = attribute;
+  };
+
+  for (let i = 0; i < finishClass.length; i++) {
+      finishClass[i].addEventListener('click', finishBtn, false);
+  }
+
+
+  $('.est-time').click(function(){
+      $('.est-time').removeClass('selected');
+      $(this).addClass('selected');
+  })
+
+  $('.searching-site').click(function(){
+      $('.searching-site').removeClass('selected');
+      $(this).addClass('selected');
+  })
+
+  $('.req-init-time').click(function(){
+      $('.req-init-time').removeClass('selected');
+      $(this).addClass('selected');
+  })
+
+  $('.finished-init-time').click(function(){
+      $('.finished-init-time').removeClass('selected');
+      $(this).addClass('selected');
+  })
+
+
+
+  $('#set_btn').click(function(){
+      $('.modal-background').removeClass('hide')
+  })
+  $('#close_modal').click(function(){
+      $('.modal-background').addClass('hide')
+  })
+  
+</script>
+  

@@ -300,7 +300,7 @@ article{
 
 
 .song-element>div:last-child>a>.refresh{
-  background: url( "../assets/img/back.jpg" ) no-repeat;
+  background: url( "/static/images/back.jpg" ) no-repeat;
   border: none;
   width: 32px;
   height: 32px;
@@ -309,7 +309,7 @@ article{
 }
 
 .song-element>div:last-child>a>.search{
-  background: url( "../assets/img/search.jpg" ) no-repeat;
+  background: url( "/static/images/search.jpg" ) no-repeat;
   border: none;
   width: 32px;
   height: 32px;
@@ -317,7 +317,7 @@ article{
 }
 
 .song-element>div:last-child>a>.delete{
-  background: url( "../assets/img/x-button.jpg" ) no-repeat;
+  background: url( "/static/images/x-button.jpg" ) no-repeat;
   border: none;
   width: 32px;
   height: 32px;
@@ -368,11 +368,13 @@ body{
   box-shadow: 0 2px 10px 0 rgba(0,0,0,0.05);
   top:0;
   right: 0;
+  padding-top: 64px;
 
   width: 400px;
   height: 100vh;
 }
 
+.modal-close>img{width:20px;}
 .modal-close{
   padding: 3px 15px;
   position: absolute;
@@ -413,10 +415,12 @@ body{
   border-radius: 20px
 }
 
-
-.melon,
-.genie,
-.bugs{
+.img-btn.selected{
+  opacity: 1;
+}
+.img-btn{
+  outline: none;
+  opacity: 0.5;
   width: 60px;
   height: 60px;
   border: none;
@@ -426,14 +430,14 @@ body{
   background-color: transparent;
 }
 .melon{
-  background-image: url( "../assets/img/melon.jpg" );
+  background-image: url( "/static/images/melon.jpg" );
 }
 
 .genie{
-  background-image: url( "../assets/img/genie.jpg" );
+  background-image: url( "/static/images/genie.jpg" );
 }
 .bugs{
-  background-image: url( "../assets/img/bugs.jpg" );
+  background-image: url( "/static/images/bugs.jpg" );
 }
 
 .save{
