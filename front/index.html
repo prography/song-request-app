@@ -14,7 +14,7 @@
       <a href="#" class="nav-text">
         밤과 음악사이
       </a>
-      <a href="#settings" class="setimg">
+      <a href="#settings" class="setimg" id="set_btn">
         <img class="image" src = "/assets/img/settings.png" >
       </a>
     </div>
@@ -25,8 +25,8 @@
     <!---->
   </nav>
   <div class="app-root">Loading...</div>
-  <div class="modal-background">
-    <button class="modal-close">x</button>
+  <div class="modal-background hide">
+    <button class="modal-close" id="close_modal"><img src="assets/img/close.png"></button>
     <div class="modal">
       <div class="button-wrap">
         <div class="section-title">예상소요시간</div>
@@ -35,7 +35,7 @@
       </div>
       <div class="button-wrap">
         <div class="section-title">검색 사이트</div>
-        <button class="searching-site img-btn melon" value="0"></button>
+        <button class="searching-site img-btn melon selected" value="0"></button>
         <button class="searching-site img-btn genie" value="1"></button>
         <button class="searching-site img-btn bugs" value="2"></button>
       </div>
@@ -76,7 +76,6 @@
     let estTimeBtn = function() {
         let attribute = this.getAttribute("value");
         document.getElementById('est_time').value = attribute;
-        console.log(document.getElementById('est_time').value)
     };
 
     for (let i = 0; i < estTimeClass.length; i++) {
@@ -84,13 +83,11 @@
     }
 
 
-
     let searchingClass = document.getElementsByClassName("searching-site");
 
     let searchingBtn = function() {
         let attribute = this.getAttribute("value");
         document.getElementById('searching_site').value = attribute;
-        console.log(document.getElementById('searching_site').value)
     };
 
     for (let i = 0; i < searchingClass.length; i++) {
@@ -103,26 +100,51 @@
     let reqBtn = function() {
         let attribute = this.getAttribute("value");
         document.getElementById('req_init_time').value = attribute;
-        console.log(document.getElementById('req_init_time').value)
     };
 
     for (let i = 0; i < reqClass.length; i++) {
         reqClass[i].addEventListener('click', reqBtn, false);
     }
 
+    let finishClass = document.getElementsByClassName("finished-init-time");
 
-    //finished
-    let reqClass = document.getElementsByClassName("req-init-time");
-
-    let reqBtn = function() {
+    let finishBtn = function() {
         let attribute = this.getAttribute("value");
-        document.getElementById('req_init_time').value = attribute;
-        console.log(document.getElementById('req_init_time').value)
+        document.getElementById('finished_init_time').value = attribute;
     };
 
-    for (let i = 0; i < reqClass.length; i++) {
-        reqClass[i].addEventListener('click', reqBtn, false);
+    for (let i = 0; i < finishClass.length; i++) {
+        finishClass[i].addEventListener('click', finishBtn, false);
     }
 
+
+    $('.est-time').click(function(){
+        $('.est-time').removeClass('selected');
+        $(this).addClass('selected');
+    })
+
+    $('.searching-site').click(function(){
+        $('.searching-site').removeClass('selected');
+        $(this).addClass('selected');
+    })
+
+    $('.req-init-time').click(function(){
+        $('.req-init-time').removeClass('selected');
+        $(this).addClass('selected');
+    })
+
+    $('.finished-init-time').click(function(){
+        $('.finished-init-time').removeClass('selected');
+        $(this).addClass('selected');
+    })
+
+
+
+    $('#set_btn').click(function(){
+        $('.modal-background').removeClass('hide')
+    })
+    $('#close_modal').click(function(){
+        $('.modal-background').addClass('hide')
+    })
 
 </script>

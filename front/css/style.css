@@ -374,6 +374,7 @@ body{
   height: 100vh;
 }
 
+.modal-close>img{width:20px;}
 .modal-close{
   padding: 3px 15px;
   position: absolute;
@@ -414,10 +415,12 @@ body{
   border-radius: 20px
 }
 
-
-.melon,
-.genie,
-.bugs{
+.img-btn.selected{
+  opacity: 1;
+}
+.img-btn{
+  outline: none;
+  opacity: 0.5;
   width: 60px;
   height: 60px;
   border: none;

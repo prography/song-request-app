@@ -2,9 +2,9 @@ from django.db import models
 
 class store(models.Model):
     TYPE1 = (
-        ('1', '멜론'),
-        ('2', '지니'),
-        ('3', '벅스')
+        ('1', 'melon'),
+        ('2', 'genie'),
+        ('3', 'bugs')
     )
     name = models.CharField(max_length=100)
     delay = models.IntegerField(default=0)
