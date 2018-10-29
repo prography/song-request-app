@@ -40,20 +40,12 @@
             {% endifequal %}
                 
         </article>
-        <aside>
-                <form action="ast.php">
-                    {{ store.delay }}
-                </form>
-        </aside>
-
     </div>
-    <footer>
-        <a href="{% url 'main:song_all_delete' store_id=store.id %}">
-            <button class ="init" href="{% url 'main:song_all_delete' store_id=store.id %}">
-                초기화
-            </button>
-        </a>
-    </footer>
-
-                
+{% endblock %}
+{% block footer %}
+    <a href="{% url 'main:song_all_delete' store_id=store.id %}">
+        <button class ="init">
+            초기화
+        </button>
+    </a>
 {% endblock %}

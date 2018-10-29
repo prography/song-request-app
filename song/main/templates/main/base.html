@@ -28,37 +28,48 @@
 
   <div class="modal-background hide">
       <button class="modal-close" id="close_modal"><img src="{% static 'images/close.png'%}"></button>
-      <form method="POST" action="{% url 'main:store_set' 1 %}">
+      <!-- <form method="POST" action="{% url 'main:store_set' 1 %}"> -->
         {% csrf_token %}
         <div class="modal">
           <div class="button-wrap">
             <div class="section-title">예상소요시간</div>
-            <button type="button" class="est-time text-btn selected" name="delay" value="30">30분</button>
-            <button type="button" class="est-time text-btn" name="delay" value="60">60분</button>
+            <button class="est-time text-btn selected" name="delay" value="30">30분</button>
+            <button class="est-time text-btn" name="delay" value="60">60분</button>
           </div>
           <div class="button-wrap">
             <div class="section-title">검색 사이트</div>
-            <button type="button" class="searching-site img-btn melon selected" name="site" value="1"></button>
-            <button type="button" class="searching-site img-btn genie" name="site" value="2"></button>
-            <button type="button" class="searching-site img-btn bugs" name="site" value="3"></button>
+            <button class="searching-site img-btn melon selected" name="site" value="1"></button>
+            <button class="searching-site img-btn genie" name="site" value="2"></button>
+            <button class="searching-site img-btn bugs" name="site" value="3"></button>
           </div>
           <div class="button-wrap">
             <div class="section-title">초기화 시간</div>
             <div class="subtitle">신청 플레이리스트</div>
-            <button type="button" class="req-init-time text-btn selected" name="reset_list" value="2">2시간</button>
-            <button type="button" class="req-init-time text-btn" name="reset_list" value="4">4시간</button>
-            <button type="button" class="req-init-time text-btn" name="reset_list" value="6">6시간</button>
+            <button class="req-init-time text-btn selected" name="reset_list" value="2">2시간</button>
+            <button class="req-init-time text-btn" name="reset_list" value="4">4시간</button>
+            <button class="req-init-time text-btn" name="reset_list" value="6">6시간</button>
     
             <div class="subtitle">완료 플레이리스트</div>
-            <button type="button" class="finished-init-time text-btn selected" name="played" value="2">2시간</button>
-            <button type="button" class="finished-init-time text-btn" name="played" value="4">4시간</button>
-            <button type="button" class="finished-init-time text-btn" name="played" value="6">6시간</button>
+            <button class="finished-init-time text-btn selected" name="played" value="2">2시간</button>
+            <button class="finished-init-time text-btn" name="played" value="4">4시간</button>
+            <button class="finished-init-time text-btn" name="played" value="6">6시간</button>
           </div>
           <button class="save" type="submit">저 &nbsp;장</button>
+          <form>
+              <input type="hidden" id="est_time" name="est_time" value="0">
+              <input type="hidden" id="searching_site" name="searching_site" value="0">
+              <input type="hidden" id="req_init_time" name="req_init_time" value="0">
+              <input type="hidden" id="finished_init_time" name="finished_init_time" value="0">
+              <button class="save" type="submit">저 &nbsp;장</button>
+          </form>
         </div>
-      </form>
+      <!-- </form> -->
   </div>
 </body>
+<footer>
+  {% block footer %}
+  {% endblock %}
+</footer>
 </html>
 <script
   src="https://code.jquery.com/jquery-3.3.1.slim.js"
