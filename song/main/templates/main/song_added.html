@@ -1,0 +1,24 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/myForm.css' %}">
+    </head>
+    <body>
+        <div class="container">
+            <label id="songInfo">{{song.singer}} - {{song.title}}</label>
+            <br>
+            <font color="#2290c3" size = "43pt">접수완료되었습니다.</font>
+            <br>
+            예상 소요시간은 <b id="setTimevalue">{{song.store.delay}}</b>분 입니다.
+        
+            <div class="row">
+                <form method="GET" action="{% url 'main:song_add' %}">
+                    {% csrf_token %}
+                    <input type="submit" value="확인">
+                </form>
+            </div> 
+        </div>
+    </body>
+</html>

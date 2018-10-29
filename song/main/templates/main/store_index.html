@@ -1,0 +1,65 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <header>        
+        <nav class="lower-nav">   
+            <button type="button" class="selected">신청 플레이리스트</button>
+            <button type="button" onclick="location.href='{% url 'main:song_complited' store_id=store.id %}';">완료 플레이리스트</button>
+            <div class="lower-nav-button-group hide">
+                <button type="button" class="selected">시간순</button>
+                <button type="button">날짜순</button>
+                <button type="button">신청순</button>
+            </div>
+
+            <a href="{% url 'main:song_complited' store_id=store.id %}">완료 플레이리스트</a>
+        </nav>
+    </header>
+    <div id="main">
+        <article>
+            {% ifequal song.count 0 %}
+                신청된 노래가 없습니다.
+            {% else %}       
+                {% for s in song %}
+                    <div class="song-element">
+                        <div>{{s.singer}} - {{s.title}}</div>
+                        <div>{{s.order_time|date:"Y .m .d"}}</div>
+                        <div>  
+                            <button type="button"  class="search">
+                                {% if s.store.site == '1' %}
+                                    <a href="https://www.melon.com/search/total/index.htm?q={{s.singer}}+{{s.title}}&section=&searchGnbYn=Y&kkoSpl=Y&kkoDpType=&linkOrText=T&ipath=srch_form"
+                                    target="_blank" onclick = "location.href='{% url 'main:song_played' song_id=s.pk %}';" class="search-btn modiLocation">
+                                {% elif s.store.site == '2' %}
+                                    <a href="http://www.genie.co.kr/search/searchMain?query={{s.singer}}%2520{{s.title}}"
+                                    target="_blank" onclick = "location.href='{% url 'main:song_played' song_id=s.pk %}';">
+                                {% else %}
+                                    <a href="https://music.bugs.co.kr/search/integrated?q={{s.singer}}%20{{s.title}}"
+                                    target="_blank"  onclick = "location.href='{% url 'main:song_played' song_id=s.pk %}';">
+                                {% endif %}
+                                검색</a>
+                            </button> 
+                            <button type="button"  class="delete">
+                                <a href="{% url 'main:song_delete' song_id=s.pk %}" type="button" class="delete-btn">삭제</a>
+                            </button>
+                        </div>   
+                    </div>
+                {% endfor %}
+            {% endifequal %}
+                
+        </article>
+        <aside>
+                <form action="ast.php">
+                    {{ store.delay }}
+                </form>
+        </aside>
+
+    </div>
+    <footer>
+        <a href="{% url 'main:song_all_delete' store_id=store.id %}">
+            <button class ="init" href="{% url 'main:song_all_delete' store_id=store.id %}">
+                초기화
+            </button>
+        </a>
+    </footer>
+
+                
+{% endblock %}

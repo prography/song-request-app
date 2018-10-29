@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>SPA</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  <style>
+    input.search-btn{
+      background: url( "/static/images/search.jpg" ) no-repeat;
+    }
+    input.delete-btn {
+      background: url( "/static/images/x-button.jpg" ) no-repeat;  
+    }
+    .main{
+      background: url("/static/images/wall.jpg") fixed center;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="#">밤과 음악사이</a></li>
+        <a href="#settings" class="setimg">
+          <img class="image" src = "{% static 'images/settings.png' %}" >                            
+        </a>      
+    </ul>
+  </nav>
+  <div class="app-root">
+      {% block content %}
+      {% endblock %}
+  </div>
+</body>
+<footer>
+    {% block footer %}
+    {% endblock %}
+</footer>
+</html>

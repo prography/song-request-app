@@ -1,0 +1,28 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/myForm.css' %}">
+    </head>
+    <body>
+        <div class="container">
+            <a href="#">밤과 음악사이</a>
+            <form method="POST" action="{% url 'main:song_add' %}">
+                {% csrf_token %}
+                <b>가 수</b> 
+                <input type="text" name="singer" id="artist"placeholder="가수명을 입력하세요.">
+                
+                <b>노래제목</b>
+                <input type="text" name="title" id="title" placeholder="노래제목을 입력하세요.">
+                
+                <!-- 메시지 : <input type="text" name="message">
+                가게번호(1,2) : <input type="text" name="store">
+                 -->
+                <input type="hidden" value=1 name="store">
+                <div class="row">
+                    <input type="submit" value="완료">
+                </div> 
+            </form>
+    </body>
+</html>

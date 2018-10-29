@@ -1,0 +1,5 @@
+APScheduler==3.5.3
+Django==1.11.16
+pytz==2018.5
+six==1.11.0
+tzlocal==1.5.1

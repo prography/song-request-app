@@ -1,0 +1,30 @@
+<h4>설정</h4>
+    <form method="POST" action="{% url 'main:store_set' store_id %}">
+        {% csrf_token %}
+
+        예상 소요시간
+        <input type="radio" name="delay" value="30" checked /> 30
+        <input type="radio" name="delay" value="60"/> 60
+        <br>
+
+        검색 사이트
+        <input type="radio" name="site" value="1" checked /> 멜론
+        <input type="radio" name="site" value="2"/> 지니
+        <input type="radio" name="site" value="3"/> 벅스
+        <br/>
+
+        신청 플레이 리스트
+        <input type="radio" name="reset_list" value="0" checked /> 설정 안함
+        <input type="radio" name="reset_list" value="2"/> 2시간
+        <input type="radio" name="reset_list" value="4"/> 4시간
+        <input type="radio" name="reset_list" value="6"/> 6시간
+        <br/>
+
+        완료 플레이 리스트
+        <input type="radio" name="played" value="0" checked/> 설정안함
+        <input type="radio" name="played" value="2"/> 2시간
+        <input type="radio" name="played" value="4"/> 4시간
+        <input type="radio" name="played" value="6"/> 6시간
+        <br/>
+        <input type="submit" value="저장">
+    </form>
