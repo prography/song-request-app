@@ -30,38 +30,99 @@
     <div class="modal">
       <div class="button-wrap">
         <div class="section-title">예상소요시간</div>
-        <button class="text-btn selected">30분</button>
-        <button class="text-btn">60분</button>
+        <button class="est-time text-btn selected" value="30">30분</button>
+        <button class="est-time text-btn" value="60">60분</button>
       </div>
       <div class="button-wrap">
         <div class="section-title">검색 사이트</div>
-        <button class="img-btn melon"></button>
-        <button class="img-btn genie"></button>
-        <button class="img-btn bugs"></button>
+        <button class="searching-site img-btn melon" value="0"></button>
+        <button class="searching-site img-btn genie" value="1"></button>
+        <button class="searching-site img-btn bugs" value="2"></button>
       </div>
       <div class="button-wrap">
-        <div class="section-title">예상소요시간</div>
+        <div class="section-title">초기화 시간</div>
         <div class="subtitle">신청 플레이리스트</div>
-        <button class="text-btn selected">2시간</button>
-        <button class="text-btn">4시간</button>
-        <button class="text-btn">6시간</button>
+        <button class="req-init-time text-btn selected" value="2">2시간</button>
+        <button class="req-init-time text-btn" value="4">4시간</button>
+        <button class="req-init-time text-btn" value="6">6시간</button>
 
-        <div class="subtitle">신청 플레이리스트</div>
-        <button class="text-btn selected">2시간</button>
-        <button class="text-btn">4시간</button>
-        <button class="text-btn">6시간</button>
+        <div class="subtitle">완료 플레이리스트</div>
+        <button class="finished-init-time text-btn selected" value="2">2시간</button>
+        <button class="finished-init-time text-btn" value="4">4시간</button>
+        <button class="finished-init-time text-btn" value="6">6시간</button>
       </div>
-      <button class="save">저 &nbsp;장</button>
+      <form>
+        <input type="hidden" id="est_time" name="est_time" value="0">
+        <input type="hidden" id="searching_site" name="searching_site" value="0">
+        <input type="hidden" id="req_init_time" name="req_init_time" value="0">
+        <input type="hidden" id="finished_init_time" name="finished_init_time" value="0">
+        <button class="save" type="submit">저 &nbsp;장</button>
+      </form>
     </div>
   </div>
 </body>
 </html>
-
+<script
+        src="https://code.jquery.com/jquery-3.3.1.slim.js"
+        integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
+        crossorigin="anonymous"></script>
 <script>
     function setURL(url){
         location.href = url
     }
-    function setModlaValue(inputName, value){
-        document.getElementById(inputName).value = value;
+
+    let estTimeClass = document.getElementsByClassName("est-time");
+
+    let estTimeBtn = function() {
+        let attribute = this.getAttribute("value");
+        document.getElementById('est_time').value = attribute;
+        console.log(document.getElementById('est_time').value)
+    };
+
+    for (let i = 0; i < estTimeClass.length; i++) {
+        estTimeClass[i].addEventListener('click', estTimeBtn, false);
     }
+
+
+
+    let searchingClass = document.getElementsByClassName("searching-site");
+
+    let searchingBtn = function() {
+        let attribute = this.getAttribute("value");
+        document.getElementById('searching_site').value = attribute;
+        console.log(document.getElementById('searching_site').value)
+    };
+
+    for (let i = 0; i < searchingClass.length; i++) {
+        searchingClass[i].addEventListener('click', searchingBtn, false);
+    }
+
+
+    let reqClass = document.getElementsByClassName("req-init-time");
+
+    let reqBtn = function() {
+        let attribute = this.getAttribute("value");
+        document.getElementById('req_init_time').value = attribute;
+        console.log(document.getElementById('req_init_time').value)
+    };
+
+    for (let i = 0; i < reqClass.length; i++) {
+        reqClass[i].addEventListener('click', reqBtn, false);
+    }
+
+
+    //finished
+    let reqClass = document.getElementsByClassName("req-init-time");
+
+    let reqBtn = function() {
+        let attribute = this.getAttribute("value");
+        document.getElementById('req_init_time').value = attribute;
+        console.log(document.getElementById('req_init_time').value)
+    };
+
+    for (let i = 0; i < reqClass.length; i++) {
+        reqClass[i].addEventListener('click', reqBtn, false);
+    }
+
+
 </script>
