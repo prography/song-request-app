@@ -4,15 +4,9 @@
     <header>        
         <nav class="lower-nav">   
             <button type="button" class="selected">신청 플레이리스트</button>
-            <button type="button" onclick="location.href='{% url 'main:song_complited' store_id=store.id %}';">완료 플레이리스트</button>
-            <div class="lower-nav-button-group hide">
-                <button type="button" class="selected">시간순</button>
-                <button type="button">날짜순</button>
-                <button type="button">신청순</button>
-            </div>
-
-            <a href="{% url 'main:song_complited' store_id=store.id %}">완료 플레이리스트</a>
+            <button type="button" onclick="location.href='{% url 'main:song_completed' store_id=store.id %}';">완료 플레이리스트</button>
         </nav>
+    
     </header>
     <div id="main">
         <article>
@@ -24,22 +18,22 @@
                         <div>{{s.singer}} - {{s.title}}</div>
                         <div>{{s.order_time|date:"Y .m .d"}}</div>
                         <div>  
-                            <button type="button"  class="search">
-                                {% if s.store.site == '1' %}
-                                    <a href="https://www.melon.com/search/total/index.htm?q={{s.singer}}+{{s.title}}&section=&searchGnbYn=Y&kkoSpl=Y&kkoDpType=&linkOrText=T&ipath=srch_form"
-                                    target="_blank" onclick = "location.href='{% url 'main:song_played' song_id=s.pk %}';" class="search-btn modiLocation">
-                                {% elif s.store.site == '2' %}
-                                    <a href="http://www.genie.co.kr/search/searchMain?query={{s.singer}}%2520{{s.title}}"
-                                    target="_blank" onclick = "location.href='{% url 'main:song_played' song_id=s.pk %}';">
-                                {% else %}
-                                    <a href="https://music.bugs.co.kr/search/integrated?q={{s.singer}}%20{{s.title}}"
-                                    target="_blank"  onclick = "location.href='{% url 'main:song_played' song_id=s.pk %}';">
-                                {% endif %}
-                                검색</a>
-                            </button> 
-                            <button type="button"  class="delete">
-                                <a href="{% url 'main:song_delete' song_id=s.pk %}" type="button" class="delete-btn">삭제</a>
-                            </button>
+                            {% if s.store.site == '1' %}
+                                <a href="https://www.melon.com/search/total/index.htm?q={{s.singer}}+{{s.title}}&section=&searchGnbYn=Y&kkoSpl=Y&kkoDpType=&linkOrText=T&ipath=srch_form"
+                                target="_blank" onclick = "location.href='{% url 'main:song_played' song_id=s.pk %}';">
+                            {% elif s.store.site == '2' %}
+                                <a href="http://www.genie.co.kr/search/searchMain?query={{s.singer}}%2520{{s.title}}"
+                                target="_blank" onclick = "location.href='{% url 'main:song_played' song_id=s.pk %}';">
+                            {% else %}
+                                <a href="https://music.bugs.co.kr/search/integrated?q={{s.singer}}%20{{s.title}}"
+                                target="_blank"  onclick = "location.href='{% url 'main:song_played' song_id=s.pk %}';">
+                            {% endif %}
+                            <button type="button"  class="search"></button>
+                            </a>
+
+                            <a href="{% url 'main:song_delete' song_id=s.pk %}">
+                                <button type="button"  class="delete"></button>
+                            </a>
                         </div>   
                     </div>
                 {% endfor %}

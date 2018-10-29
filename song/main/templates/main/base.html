@@ -10,14 +10,27 @@
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
   <style>
-    input.search-btn{
-      background: url( "/static/images/search.jpg" ) no-repeat;
+    .song-element>div:last-child>a>.search{
+      background: url( "{% static 'images/search.jpg' %}" ) no-repeat;
+      border: none;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
     }
-    input.delete-btn {
-      background: url( "/static/images/x-button.jpg" ) no-repeat;  
+    .song-element>div:last-child>a>.delete {
+      background: url( "{% static 'images/x-button.jpg' %}" ) no-repeat;  
+      border: none;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
     }
-    .main{
-      background: url("/static/images/wall.jpg") fixed center;
+    .song-element>div:last-child>a>.refresh{
+      background: url( "{% static 'images/back.jpg'%}" ) no-repeat;
+      border: none;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      padding-top: 3px;
     }
   </style>
 </head>

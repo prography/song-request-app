@@ -3,13 +3,8 @@
 {% block content %}
     <header>
         <nav class="lower-nav">
-            <button type="button" onclick="{% url 'main:song_return' song_id=s.pk %}">신청 플레이리스트</button>
+            <button type="button" onclick="location.href='{% url 'main:store_index' store_id=store.pk %}';">신청 플레이리스트</button>
             <button type="button" class="selected" onclick="setURL('#end')">완료 플레이리스트</button>
-            <div class="lower-nav-button-group">
-                <button type="button" class="selected">시간순</button>
-                <button type="button">날짜순</button>
-                <button type="button">신청순</button>
-            </div>
         </nav>
     </header>
 
@@ -21,9 +16,7 @@
                     <div>{{s.order_time|date:"Y .m .d"}}</div>
                     <div>
                         <a href="{% url 'main:song_return' song_id=s.pk %}">
-                            <button type="button" class="refresh">
-                                되돌리기
-                            </button>
+                            <button type="button" class="refresh"></button>
                         </a>
                     </div>
                 </div>
@@ -31,10 +24,4 @@
         </article>
     </div>
 
-{% endblock %}
-
-{% block footer %}
-    <a href="{% url 'main:song_all_delete' store_id=store.id %}">
-        <button class ="init">초기화</button>
-    </a>
 {% endblock %}
