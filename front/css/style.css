@@ -16,7 +16,10 @@ h1 {
 button{
   cursor: pointer !important;
 }
-
+a{
+  text-decoration: none !important;
+  cursor: pointer;
+}
 
 body {
   margin: 0;
@@ -204,34 +207,6 @@ input.save-btn {
 }
 
 
-input > button:hover {
-  opacity: 0.3;
-}
-
-input > button {
-  border: none;
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-}
-
-input.search-btn {
-  background: url( "../assets/img/search.jpg" ) no-repeat;
-  border: none;
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-}
-
-
-
-
-input.modiLocation {  
-  margin-left: 150px;
-}
-
-
-
 
 /*****************************************/
 /*****************************************/
@@ -314,7 +289,7 @@ article{
 }
 
 
-.song-element>div:last-child>.refresh{
+.song-element>div:last-child>a>.refresh{
   background: url( "../assets/img/back.jpg" ) no-repeat;
   border: none;
   width: 32px;
@@ -323,7 +298,7 @@ article{
   padding-top: 3px;
 }
 
-.song-element>div:last-child>.search{
+.song-element>div:last-child>a>.search{
   background: url( "../assets/img/search.jpg" ) no-repeat;
   border: none;
   width: 32px;
@@ -331,7 +306,7 @@ article{
   cursor: pointer;
 }
 
-.song-element>div:last-child>.delete{
+.song-element>div:last-child>a>.delete{
   background: url( "../assets/img/x-button.jpg" ) no-repeat;
   border: none;
   width: 32px;
@@ -342,8 +317,9 @@ article{
 footer{
   text-align: right;
   padding: 0 75px;
+  width: 900px;
 }
-footer>button{
+footer>a>button{
   -webkit-transition: 0.2s ease-in-out;
   -moz-transition: 0.2s ease-in-out;
   -ms-transition: 0.2s ease-in-out;
@@ -358,7 +334,7 @@ footer>button{
   float: right;
 }
 
-footer>button:hover{
+footer>a>button:hover{
   background:#FFFFFF;
   color:#FF1D23;
   opacity: 0.5;
@@ -368,6 +344,7 @@ body{
   position: relative;
 }
 .modal-background{
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
