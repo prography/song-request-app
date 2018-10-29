@@ -1,69 +1,64 @@
-{% load static %}
+{% extends 'main/index.html' %}
 
+{% block content %}
 <!DOCTYPE html>
 <title>Example</title>
-<link rel="stylesheet" href="{% static 'css/main.css' %}">
-<link rel="stylesheet" href="{% static 'css/admin.css' %}">
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
-<link rel="stylesheet" href="{% static 'css/myForm.css' %}">
-    <body>
-    <header>
-        <nav>
-            <ul>        
-                    <li><a href="#">신청 플레이리스트</a></li>        
-                    <li><a href="#end">완료 플레이리스트</a></li>  
-                    <li><a href="#empty">EMPTY PAGE</a></li>  
-            </ul>
-        </nav>
-    </header>
+<body>
+<header>
+    <nav class="lower-nav">
+        <button type="button" class="selected" onclick="setURL('#')">신청 플레이리스트</button>
+        <button type="button" onclick="setURL('#end')">완료 플레이리스트</button>
+        <div class="lower-nav-button-group hide">
+            <button type="button" class="selected">시간순</button>
+            <button type="button">날짜순</button>
+            <button type="button">신청순</button>
+        </div>
+        <!--<a href="#">신청 플레이리스트</a>-->
+        <!--<a href="#end" class="endplaylist">완료 플레이리스트</a>-->
+        <!--<a class="endplaylist sortingMenu">시간순</a>-->
+        <!--<a class="sortingMenu">날짜순</a>-->
+        <!--<a class="sortingMenu">신청순</a>-->
 
-    <div id="main">
-        <article>            
-            <ul>        
-                    <li><b>기리보이-호구</b> </li>        
-                    <li><b>2018.10.12</b></li>
-                    
-                    <li>  <input type="button"  class="search-btn"> </li>
-                    <li>  <input type="button"  class="delete-btn"> </li>
-            </ul>
+    </nav>
 
-            <ul>        
-                    <li><b>기리보이-호구</b> </li>        
-                    <li><b>2018.10.12</b></li>
-                    
-                    <li>  <input type="button"  class="search-btn"> </li>
-                    <li>  <input type="button"  class="delete-btn"> </li>
-            </ul>
-
-            <ul>        
-                    <li><b>기리보이-호구</b> </li>        
-                    <li><b>2018.10.12</b></li>
-                    
-                    <li>  <input type="button"  class="search-btn"> </li>
-                    <li>  <input type="button"  class="delete-btn"> </li>
-            </ul>
-
-            <ul>        
-                    <li><b>기리보이-호구</b> </li>        
-                    <li><b>2018.10.12</b></li>
-                    
-                    <li>  <input type="button"  class="search-btn"> </li>
-                    <li>  <input type="button"  class="delete-btn"> </li>
-            </ul>
-
-        </article>   
-
-     
-
-    
-               
-        
-        <aside>Aside</aside>
+</header>
 
 
-    </div>
-        <footer>
-                <button class ="init">초기화</button>
-        </footer>
-    </body>
+<div id="main">
+    <article>
+        {% for song in songs %}
+            <div class="song-element">
+                <div>{{ song.singer }}-{{ song.title }}</div>
+                <div>{{ song.created_at|date:"Y-m-d H:i:s" }}</div>
+                <div>
+                    <button type="button" class="search" href="{{ url1 }} {{ song.title }}+{{song.singer}}{{url2}}" onclick="location.href='{% url 'play_song' pk=song.id %}';" target="_blank">실행</button>
+                    <button type="button" class="delete" href="{% url 'delete_one' pk=song.id %}">삭제</button>
+                </div>
+            </div>
+        {% endfor %}
+{#        <div class="song-element">#}
+{#            <div>기리보이-호구</div>#}
+{#            <div>2018.10.12</div>#}
+{#            <div>#}
+{#                <button type="button" class="search"></button>#}
+{#                <button type="button" class="delete"></button>#}
+{#            </div>#}
+{#        </div>#}
 
+
+
+        <!--<ul>-->
+        <!--<li><b>기리보이-호구</b></li>-->
+        <!--<li>2018.10.12</li>-->
+        <!--<li><input type="button" class="rollback-btn modiLocation"></li>-->
+        <!--</ul>-->
+
+    </article>
+
+</div>
+
+</body>
+<footer>
+    <button class="init">초기화</button>
+</footer>
+{% endblock %}

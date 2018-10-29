@@ -8,7 +8,7 @@ class Song(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
     title = models.CharField(max_length=50)
     singer = models.CharField(max_length=50)
-    message = models.CharField(max_length=200)
+    message = models.CharField(max_length=200, blank=True, null=True)
     is_played = models.BooleanField(default=False)
     is_deleted = models.BooleanField(default=False)
 
