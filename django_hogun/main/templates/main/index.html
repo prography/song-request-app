@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>SPA</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script src="{% static 'js/index.js' %}" defer></script>
+</head>
+<body>
+  <nav class="upper-nav">
+    <div>
+      <a href="#" class="nav-text">
+        밤과 음악사이
+      </a>
+      <a href="{% url 'set_settings' pk=store.pk %}#settings" class="setimg">
+        <img class="image" src="{% static 'img/settings.png' %}" >
+      </a>
+    </div>
+    {% block content %}
+    {% endblock %}
+  </nav>
+  <div class="app-root">Loading...</div>
+</body>
+</html>

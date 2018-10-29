@@ -25,7 +25,7 @@ def song_list(request, pk=1):
         url1 = "http://www.genie.co.kr/search/searchMain?query="
         url2 = ""
 
-    return render(request, 'main/song_list.html', {'songs': songs, 'url1': url1, 'url2': url2, 'pk': pk})
+    return render(request, 'main/host-home-window.html', {'store': store, 'songs': songs, 'url1': url1, 'url2': url2, 'pk': pk})
 
 
 def complete_list(request, pk=1):
@@ -52,18 +52,26 @@ def order_song(request, pk):
         title = request.POST.get('title')
         singer = request.POST.get('singer')
         message = request.POST.get('message')
-        if title and singer and message:
+        print('-----------------------------')
+        print(title)
+        print(singer)
+        print(message)
+        print('-----------------------------')
+
+        if title and singer: # and message:
             Song.objects.create(store=store, title=title, singer=singer, message=message)
             return redirect('order_completed', pk=store.pk)
         else:
             print("Wrong Field Values")
-            return render(request, 'main/order_song.html')
-    return render(request, 'main/order_song.html')
+            return render(request, 'main/guest-request-start-window.html')
+    return render(request, 'main/guest-request-start-window.html')
 
 
 def order_completed(request, pk):
     store = get_object_or_404(Store, pk=pk)
-    return render(request, 'main/order_completed.html', {'store': store})
+    if request.method == "POST":
+        return redirect('order_song', pk=store.pk)
+    return render(request, 'main/guest-request-end-window.html', {'store': store})
 
 
 def play_song(request, pk):
