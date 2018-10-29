@@ -1,12 +1,7 @@
 (function () {
   const root = document.querySelector('.app-root');
-  
-  const empty = document.body;
 
-  function render(data) {
-    const json = JSON.parse(data);
-    root.innerHTML = `<h1>${json.title}</h1><p>${json.content}</p>`;
-  }
+  const empty = document.body;
 
   function renderHtml(html) {
     root.innerHTML = html;
@@ -31,13 +26,17 @@
     });
   }
 
+  function setURL(url) {
+      location.href = url + '.html';
+  }
+
   const routes = {
     '': function () {
       get('/data/host-home-window.html').then(renderHtml);
     },
     'end': function () {
       get('/data/host-end-request-window.html').then(renderHtml);
-    },    
+    },
     'settings': function () {
       get('/data/host-setting-window.html').then(renderHtml);
     },

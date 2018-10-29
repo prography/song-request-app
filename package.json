@@ -10,5 +10,8 @@
     "eslint-config-airbnb-base": "^11.3.2",
     "eslint-plugin-html": "^3.2.0",
     "eslint-plugin-import": "^2.7.0"
+  },
+  "dependencies": {
+    "serve": "^10.0.2"
   }
 }
