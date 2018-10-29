@@ -14,7 +14,7 @@
       <a href="#" class="nav-text">
         밤과 음악사이
       </a>
-      <a href="#settings" class="setimg">
+      <a href="#settings" class="setimg" id="set_btn">
         <img class="image" src = "/assets/img/settings.png" >
       </a>
     </div>
@@ -25,43 +25,126 @@
     <!---->
   </nav>
   <div class="app-root">Loading...</div>
-  <div class="modal-background">
-    <button class="modal-close">x</button>
+  <div class="modal-background hide">
+    <button class="modal-close" id="close_modal"><img src="assets/img/close.png"></button>
     <div class="modal">
       <div class="button-wrap">
         <div class="section-title">예상소요시간</div>
-        <button class="text-btn selected">30분</button>
-        <button class="text-btn">60분</button>
+        <button class="est-time text-btn selected" value="30">30분</button>
+        <button class="est-time text-btn" value="60">60분</button>
       </div>
       <div class="button-wrap">
         <div class="section-title">검색 사이트</div>
-        <button class="img-btn melon"></button>
-        <button class="img-btn genie"></button>
-        <button class="img-btn bugs"></button>
+        <button class="searching-site img-btn melon selected" value="0"></button>
+        <button class="searching-site img-btn genie" value="1"></button>
+        <button class="searching-site img-btn bugs" value="2"></button>
       </div>
       <div class="button-wrap">
-        <div class="section-title">예상소요시간</div>
+        <div class="section-title">초기화 시간</div>
         <div class="subtitle">신청 플레이리스트</div>
-        <button class="text-btn selected">2시간</button>
-        <button class="text-btn">4시간</button>
-        <button class="text-btn">6시간</button>
+        <button class="req-init-time text-btn selected" value="2">2시간</button>
+        <button class="req-init-time text-btn" value="4">4시간</button>
+        <button class="req-init-time text-btn" value="6">6시간</button>
 
-        <div class="subtitle">신청 플레이리스트</div>
-        <button class="text-btn selected">2시간</button>
-        <button class="text-btn">4시간</button>
-        <button class="text-btn">6시간</button>
+        <div class="subtitle">완료 플레이리스트</div>
+        <button class="finished-init-time text-btn selected" value="2">2시간</button>
+        <button class="finished-init-time text-btn" value="4">4시간</button>
+        <button class="finished-init-time text-btn" value="6">6시간</button>
       </div>
-      <button class="save">저 &nbsp;장</button>
+      <form>
+        <input type="hidden" id="est_time" name="est_time" value="0">
+        <input type="hidden" id="searching_site" name="searching_site" value="0">
+        <input type="hidden" id="req_init_time" name="req_init_time" value="0">
+        <input type="hidden" id="finished_init_time" name="finished_init_time" value="0">
+        <button class="save" type="submit">저 &nbsp;장</button>
+      </form>
     </div>
   </div>
 </body>
 </html>
-
+<script
+        src="https://code.jquery.com/jquery-3.3.1.slim.js"
+        integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
+        crossorigin="anonymous"></script>
 <script>
     function setURL(url){
         location.href = url
     }
-    function setModlaValue(inputName, value){
-        document.getElementById(inputName).value = value;
+
+    let estTimeClass = document.getElementsByClassName("est-time");
+
+    let estTimeBtn = function() {
+        let attribute = this.getAttribute("value");
+        document.getElementById('est_time').value = attribute;
+    };
+
+    for (let i = 0; i < estTimeClass.length; i++) {
+        estTimeClass[i].addEventListener('click', estTimeBtn, false);
     }
+
+
+    let searchingClass = document.getElementsByClassName("searching-site");
+
+    let searchingBtn = function() {
+        let attribute = this.getAttribute("value");
+        document.getElementById('searching_site').value = attribute;
+    };
+
+    for (let i = 0; i < searchingClass.length; i++) {
+        searchingClass[i].addEventListener('click', searchingBtn, false);
+    }
+
+
+    let reqClass = document.getElementsByClassName("req-init-time");
+
+    let reqBtn = function() {
+        let attribute = this.getAttribute("value");
+        document.getElementById('req_init_time').value = attribute;
+    };
+
+    for (let i = 0; i < reqClass.length; i++) {
+        reqClass[i].addEventListener('click', reqBtn, false);
+    }
+
+    let finishClass = document.getElementsByClassName("finished-init-time");
+
+    let finishBtn = function() {
+        let attribute = this.getAttribute("value");
+        document.getElementById('finished_init_time').value = attribute;
+    };
+
+    for (let i = 0; i < finishClass.length; i++) {
+        finishClass[i].addEventListener('click', finishBtn, false);
+    }
+
+
+    $('.est-time').click(function(){
+        $('.est-time').removeClass('selected');
+        $(this).addClass('selected');
+    })
+
+    $('.searching-site').click(function(){
+        $('.searching-site').removeClass('selected');
+        $(this).addClass('selected');
+    })
+
+    $('.req-init-time').click(function(){
+        $('.req-init-time').removeClass('selected');
+        $(this).addClass('selected');
+    })
+
+    $('.finished-init-time').click(function(){
+        $('.finished-init-time').removeClass('selected');
+        $(this).addClass('selected');
+    })
+
+
+
+    $('#set_btn').click(function(){
+        $('.modal-background').removeClass('hide')
+    })
+    $('#close_modal').click(function(){
+        $('.modal-background').addClass('hide')
+    })
+
 </script>
