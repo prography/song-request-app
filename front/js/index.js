@@ -1,3 +1,5 @@
+
+
 (function () {
   const root = document.querySelector('.app-root');
 
@@ -24,10 +26,6 @@
         }
       };
     });
-  }
-
-  function setURL(url) {
-      location.href = url + '.html';
   }
 
   const routes = {
