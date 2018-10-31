@@ -11,20 +11,25 @@
 
 
 <div class="container">
-  <a href="#">밤과 음악사이</a>
+  <a href="#" class="left">밤과 음악사이</a>
 
   <form method="POST" class="song-form" >{% csrf_token %}
-    <b>가 수</b>
-    <input type="text" id="artist"placeholder="가수명을 입력하세요." name="singer">
+      <div class="input-element">
+        <div class="title left">가 수</div>
+        <input type="text" id="artist"placeholder="가수명을 입력하세요." name="singer">
+      </div>
 
-    <b>노래제목</b>
-    <input type="text" id="title" placeholder="노래제목을 입력하세요." name="title">
+      <div class="input-element">
+        <div class="title left">노래제목</div>
+        <input type="text" id="title" placeholder="노래제목을 입력하세요." name="title">
+      </div>
 
-    <div class="row">
-      <input type="submit" value="완료">
-    </div> 
+      <div class="row">
+        <input type="submit" value="완료">
+      </div>
   </form>
 </div>
 
 </body>
 </html>
+

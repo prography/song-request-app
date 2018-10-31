@@ -10,21 +10,24 @@
 <body>
 
 <div class="container">
-    <form method="POST" class="song-form" >{% csrf_token %}
-        <label id="songInfo">기리보이 - 호구</label>
-        <br>
-        <font color="#2290c3" size = "43pt">접수완료되었습니다.</font>
-        <br>
-        예상 소요시간은 <b id="setTimevalue">{{ store.delay_time }}</b>분 입니다.
-
-
-
-        <div class="row">
-          <input type="submit" value="확인">
+    <div class = "center">
+        <div class = "song-info" >
+            기리보이 - 호구
         </div>
-    </form>
+
+        <div class = "center-msg">
+            접수완료되었습니다.
+        </div>
+
+        <div class = "bottom-msg">
+            예상 소요시간은 <b id="setTimevalue">{{ store.delay_time }}</b>분 입니다.
+        </div>
+    </div>
+
+    <div class="row">
+        <a href="{% url 'order_song' pk=store.pk %}" class = "max-width"><input type="submit"  value="확인"></a>
+    </div>
 </div>
 
 </body>
 </html>
-

@@ -3,62 +3,42 @@
 {% block content %}
 <!DOCTYPE html>
 <title>Example</title>
+
 <body>
-<header>
-    <nav class="lower-nav">
-        <button type="button" class="selected" onclick="setURL('#')">신청 플레이리스트</button>
-        <button type="button" onclick="setURL('#end')">완료 플레이리스트</button>
-        <div class="lower-nav-button-group hide">
-            <button type="button" class="selected">시간순</button>
-            <button type="button">날짜순</button>
-            <button type="button">신청순</button>
-        </div>
-        <!--<a href="#">신청 플레이리스트</a>-->
-        <!--<a href="#end" class="endplaylist">완료 플레이리스트</a>-->
-        <!--<a class="endplaylist sortingMenu">시간순</a>-->
-        <!--<a class="sortingMenu">날짜순</a>-->
-        <!--<a class="sortingMenu">신청순</a>-->
-
-    </nav>
-
-</header>
-
-
-<div id="main">
-    <article>
-        {% for song in songs %}
-            <div class="song-element">
-                <div>{{ song.singer }}-{{ song.title }}</div>
-                <div>{{ song.created_at|date:"Y-m-d H:i:s" }}</div>
-                <div>
-                    <button type="button" class="search" href="{{ url1 }} {{ song.title }}+{{song.singer}}{{url2}}" onclick="location.href='{% url 'play_song' pk=song.id %}';" target="_blank">실행</button>
-                    <button type="button" class="delete" href="{% url 'delete_one' pk=song.id %}">삭제</button>
-                </div>
+    <header>
+        <nav class="lower-nav">
+            <button type="button" class="selected" onclick="location.href='{% url 'song_list' pk=pk %}';">신청 플레이리스트</button>
+            <button type="button" onclick="location.href='{% url 'complete_list' pk=pk %}';">완료 플레이리스트</button>
+            <div class="lower-nav-button-group hide">
+                <button type="button" class="selected">시간순</button>
+                <button type="button">날짜순</button>
+                <button type="button">신청순</button>
             </div>
-        {% endfor %}
-{#        <div class="song-element">#}
-{#            <div>기리보이-호구</div>#}
-{#            <div>2018.10.12</div>#}
-{#            <div>#}
-{#                <button type="button" class="search"></button>#}
-{#                <button type="button" class="delete"></button>#}
-{#            </div>#}
-{#        </div>#}
+        </nav>
+    </header>
 
-
-
-        <!--<ul>-->
-        <!--<li><b>기리보이-호구</b></li>-->
-        <!--<li>2018.10.12</li>-->
-        <!--<li><input type="button" class="rollback-btn modiLocation"></li>-->
-        <!--</ul>-->
-
-    </article>
-
-</div>
-
+    <div id="main">
+        <article>
+            {% for song in songs %}
+                <div class="song-element">
+                    <div>{{ song.singer }}-{{ song.title }}</div>
+                    <div>{{ song.created_at|date:"Y-m-d H:i:s" }}</div>
+                    <div>
+                        <a href="{{ url1 }} {{ song.title }}+{{song.singer}}{{url2}}" onclick="location.href='{% url 'play_song' pk=song.id %}';" target="_blank">
+                            <button type="button" class="search" ></button>
+                        </a>
+                        <a href="{% url 'delete_one' pk=song.id %}">
+                            <button type="button" class="delete"></button>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </article>
+    </div>
 </body>
 <footer>
-    <button class="init">초기화</button>
+    <a  href="{% url 'delete_all' pk=pk %}">
+        <button class="init">초기화</button>
+    </a>
 </footer>
 {% endblock %}

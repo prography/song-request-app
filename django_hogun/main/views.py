@@ -36,7 +36,7 @@ def complete_list(request, pk=1):
         songs = store.songs.all().filter(is_deleted=False, is_played=True, created_at__gte=time_from).order_by('-created_at')
     else:
         songs = store.songs.all().filter(is_deleted=False, is_played=True).order_by('-created_at')
-    return render(request, 'main/complete_list.html', {'songs': songs, 'pk': pk})
+    return render(request, 'main/host-end-request-window.html', {'store':store, 'songs': songs, 'pk': pk})
 
 
 def delete_list(request, pk=1):
@@ -69,8 +69,6 @@ def order_song(request, pk):
 
 def order_completed(request, pk):
     store = get_object_or_404(Store, pk=pk)
-    if request.method == "POST":
-        return redirect('order_song', pk=store.pk)
     return render(request, 'main/guest-request-end-window.html', {'store': store})
 
 
@@ -100,32 +98,40 @@ def restore_one(request, pk):
     song.is_played = False
     song.is_deleted = False
     song.save()
-    return redirect('song_list', pk=song.store.pk)
+    return redirect('complete_list', pk=song.store.pk)
 
 
 def set_settings(request, pk):
     store = get_object_or_404(Store, pk=pk)
-    if request.method=='POST':
-        delay_time = request.POST.get('delay_time')
-        music_site = request.POST.get('music_site')
-        period_order = request.POST.get('period_order')
-        period_complete = request.POST.get('period_complete')
+    #if request.method=='POST':
+    delay_time = request.POST.get('delay')
+    music_site = request.POST.get('site')
+    period_order = request.POST.get('reset_list')
+    period_complete = request.POST.get('played')
+    # delay_time = request.POST.get('delay_time')
+    # music_site = request.POST.get('music_site')
+    # period_order = request.POST.get('period_order')
+    # period_complete = request.POST.get('period_complete')
 
-        update_fields = []
-        if delay_time:
-            store.delay_time = delay_time
-            update_fields.append('delay_time')
-        if music_site:
-            store.music_site = music_site
-            update_fields.append('music_site')
-        if period_order:
-            store.period_order = period_order
-            update_fields.append('period_order')
-        if period_complete:
-            store.period_complete = period_complete
-            update_fields.append('period_complete')
+    print('=-=-=--=-=-=-=--=-=-=-=--=-=-=-=--=-=-=-=--=')
+    print(delay_time)
+    print(music_site)
+    print(period_order)
+    print(period_complete)
+    print('=-=-=--=-=-=-=--=-=-=-=--=-=-=-=--=-=-=-=--=')
+    update_fields = []
+    if delay_time:
+        store.delay_time = delay_time
+        update_fields.append('delay_time')
+    if music_site:
+        store.music_site = music_site
+        update_fields.append('music_site')
+    if period_order:
+        store.period_order = period_order
+        update_fields.append('period_order')
+    if period_complete:
+        store.period_complete = period_complete
+        update_fields.append('period_complete')
 
-        store.save(update_fields=update_fields)
-        return redirect('song_list', pk=store.pk)
-
-    return render(request, 'main/settings.html', {'store': store})
+    store.save(update_fields=update_fields)
+    return redirect('song_list', pk=store.pk)

@@ -16,7 +16,10 @@ h1 {
 button{
   cursor: pointer !important;
 }
-
+a{
+  text-decoration: none !important;
+  cursor: pointer;
+}
 
 body {
   margin: 0;
@@ -31,6 +34,10 @@ body {
 
 #main > nav {
   order: -1;
+}
+
+#main, header {
+  width: calc(100% - 650px);
 }
 
 
@@ -204,34 +211,6 @@ input.save-btn {
 }
 
 
-input > button:hover {
-  opacity: 0.3;
-}
-
-input > button {
-  border: none;
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-}
-
-input.search-btn {
-  background: url( "../assets/img/search.jpg" ) no-repeat;
-  border: none;
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-}
-
-
-
-
-input.modiLocation {  
-  margin-left: 150px;
-}
-
-
-
 
 /*****************************************/
 /*****************************************/
@@ -299,12 +278,17 @@ article{
   font-size: 20px;
   font-weight: 600;
   padding: 5px 0;
+  width: 485px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .song-element>div:nth-child(2){
   font-size: 18px;
   font-weight: 400;
   padding: 6px 0;
-  width: calc(100% - 250px);
+  width: 150px;
   text-align: right;
 }
 .song-element>div:last-child{
@@ -314,8 +298,8 @@ article{
 }
 
 
-.song-element>div:last-child>.refresh{
-  background: url( "../assets/img/back.jpg" ) no-repeat;
+.song-element>div:last-child>a>.refresh{
+  background: url("/static/img/back.jpg") no-repeat;
   border: none;
   width: 32px;
   height: 32px;
@@ -323,16 +307,16 @@ article{
   padding-top: 3px;
 }
 
-.song-element>div:last-child>.search{
-  background: url( "../assets/img/search.jpg" ) no-repeat;
+.song-element>div:last-child>a>.search{
+  background: url( "/static/img/search.jpg" ) no-repeat;
   border: none;
   width: 32px;
   height: 32px;
   cursor: pointer;
 }
 
-.song-element>div:last-child>.delete{
-  background: url( "../assets/img/x-button.jpg" ) no-repeat;
+.song-element>div:last-child>a>.delete{
+  background: url( "/static/img/x-button.jpg" ) no-repeat;
   border: none;
   width: 32px;
   height: 32px;
@@ -342,8 +326,9 @@ article{
 footer{
   text-align: right;
   padding: 0 75px;
+  width: 900px;
 }
-footer>button{
+footer>a>button{
   -webkit-transition: 0.2s ease-in-out;
   -moz-transition: 0.2s ease-in-out;
   -ms-transition: 0.2s ease-in-out;
@@ -358,7 +343,7 @@ footer>button{
   float: right;
 }
 
-footer>button:hover{
+footer>a>button:hover{
   background:#FFFFFF;
   color:#FF1D23;
   opacity: 0.5;
@@ -368,6 +353,7 @@ body{
   position: relative;
 }
 .modal-background{
+  /*display: none;*/
   position: absolute;
   top: 0;
   left: 0;
@@ -379,18 +365,26 @@ body{
   position: absolute;
   background-color: #ffffff;
   box-shadow: 0 2px 10px 0 rgba(0,0,0,0.05);
-  top: 84px;
+  top:0;
   right: 0;
-
-  width: 400px;
-  height: calc(100vh - 84px);
+  padding-top: 64px;
+  padding-left: 30px;
+  width: 450px;
+  height: 100vh;
 }
 
-#main,
-header{
-  width: 900px;
+.modal-close>img{width:20px;}
+.modal-close{
+  padding: 3px 15px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+  font-size: 36px;
+  background-color: transparent;
+  border: none;
+  outline: none;
 }
-
 .button-wrap{
   padding: 20px;
 }
@@ -420,10 +414,12 @@ header{
   border-radius: 20px
 }
 
-
-.melon,
-.genie,
-.bugs{
+.img-btn.selected{
+  opacity: 1;
+}
+.img-btn{
+  outline: none;
+  opacity: 0.5;
   width: 60px;
   height: 60px;
   border: none;
@@ -433,14 +429,14 @@ header{
   background-color: transparent;
 }
 .melon{
-  background-image: url( "../assets/img/melon.jpg" );
+  background-image: url("../img/melon.jpg");
 }
 
 .genie{
-  background-image: url( "../assets/img/genie.jpg" );
+  background-image: url("../img/genie.jpg");
 }
 .bugs{
-  background-image: url( "../assets/img/bugs.jpg" );
+  background-image: url("../img/bugs.jpg");
 }
 
 .save{
