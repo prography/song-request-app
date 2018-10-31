@@ -10,19 +10,21 @@
             <a href="#">밤과 음악사이</a>
             <form method="POST" action="{% url 'main:song_add' %}">
                 {% csrf_token %}
-                <b>가 수</b> 
-                <input type="text" name="singer" id="artist"placeholder="가수명을 입력하세요.">
+                <div class="input-element">
+                    <div class="title left">가 수</div>
+                    <input type="text" name="singer" id="artist"placeholder="가수명을 입력하세요.">
+                </div>
+
+                <div class="input-element">
+                    <div class="title left">노래제목</div>
+                    <input type="text" name="title" id="title" placeholder="노래제목을 입력하세요.">
+                </div>
                 
-                <b>노래제목</b>
-                <input type="text" name="title" id="title" placeholder="노래제목을 입력하세요.">
-                
-                <!-- 메시지 : <input type="text" name="message">
-                가게번호(1,2) : <input type="text" name="store">
-                 -->
                 <input type="hidden" value=1 name="store">
                 <div class="row">
                     <input type="submit" value="완료">
                 </div> 
             </form>
+        </div>
     </body>
 </html>

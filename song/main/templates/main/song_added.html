@@ -7,11 +7,20 @@
     </head>
     <body>
         <div class="container">
-            <label id="songInfo">{{song.singer}} - {{song.title}}</label>
-            <br>
-            <font color="#2290c3" size = "43pt">접수완료되었습니다.</font>
-            <br>
-            예상 소요시간은 <b id="setTimevalue">{{song.store.delay}}</b>분 입니다.
+            <div class = "center">
+
+                <div class = "song-info" >
+                    {{song.singer}} - {{song.title}}
+                </div>    
+            
+                <div class = "center-msg">
+                    접수완료되었습니다. 
+                </div>
+            
+                <div class = "bottom-msg">
+                    예상 소요시간은 <b id="setTimevalue">{{song.store.delay}}</b>분 입니다.
+                </div>
+            </div>
         
             <div class="row">
                 <form method="GET" action="{% url 'main:song_add' %}">
