@@ -36,9 +36,8 @@ body {
   order: -1;
 }
 
-#main,
-header{
-  width: 900px;
+#main, header {
+  width: calc(100% - 650px);
 }
 
 
@@ -300,7 +299,7 @@ article{
 
 
 .song-element>div:last-child>a>.refresh{
-  background: url( "/static/images/back.jpg" ) no-repeat;
+  background: url( "../assets/img/back.jpg" ) no-repeat;
   border: none;
   width: 32px;
   height: 32px;
@@ -309,7 +308,7 @@ article{
 }
 
 .song-element>div:last-child>a>.search{
-  background: url( "/static/images/search.jpg" ) no-repeat;
+  background: url( "../assets/img/search.jpg" ) no-repeat;
   border: none;
   width: 32px;
   height: 32px;
@@ -317,7 +316,7 @@ article{
 }
 
 .song-element>div:last-child>a>.delete{
-  background: url( "/static/images/x-button.jpg" ) no-repeat;
+  background: url( "../assets/img/x-button.jpg" ) no-repeat;
   border: none;
   width: 32px;
   height: 32px;
@@ -369,8 +368,8 @@ body{
   top:0;
   right: 0;
   padding-top: 64px;
-
-  width: 400px;
+  padding-left: 30px;
+  width: 450px;
   height: 100vh;
 }
 
@@ -430,14 +429,14 @@ body{
   background-color: transparent;
 }
 .melon{
-  background-image: url( "/static/images/melon.jpg" );
+  background-image: url( "../assets/img/melon.jpg" );
 }
 
 .genie{
-  background-image: url( "/static/images/genie.jpg" );
+  background-image: url( "../assets/img/genie.jpg" );
 }
 .bugs{
-  background-image: url( "/static/images/bugs.jpg" );
+  background-image: url( "../assets/img/bugs.jpg" );
 }
 
 .save{
