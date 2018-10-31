@@ -1,3 +1,4 @@
+
 {% load static %}
 
 <!DOCTYPE html>
@@ -54,8 +55,8 @@
             <button class="finished-init-time text-btn" name="played" value="4">4시간</button>
             <button class="finished-init-time text-btn" name="played" value="6">6시간</button>
           </div>
-          <button class="save" type="submit">저 &nbsp;장</button>
-          <form>
+          <button id = "fake_save" class="save" type="submit">저 &nbsp;장</button>
+          <form id = "setting_form">
               <input type="hidden" id="est_time" name="est_time" value="0">
               <input type="hidden" id="searching_site" name="searching_site" value="0">
               <input type="hidden" id="req_init_time" name="req_init_time" value="0">
@@ -155,6 +156,10 @@
   $('#close_modal').click(function(){
       $('.modal-background').addClass('hide')
   })
+
+  $('#fake_save').click(function(){
+      $("#setting_form").submit()
+  });
   
 </script>
   
