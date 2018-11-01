@@ -19,10 +19,10 @@ def song_list(request, pk=1):
         url1 = "https://www.melon.com/search/total/index.htm?q="
         url2 = "&section=&searchGnbYn=Y&kkoSpl=Y&kkoDpType=&linkOrText=T&ipath=srch_form"
     elif store.music_site == 2:
-        url1 = "https://music.bugs.co.kr/search/integrated?q="
+        url1 = "http://www.genie.co.kr/search/searchMain?query="
         url2 = ""
     elif store.music_site == 3:
-        url1 = "http://www.genie.co.kr/search/searchMain?query="
+        url1 = "https://music.bugs.co.kr/search/integrated?q="
         url2 = ""
 
     return render(request, 'main/host-home-window.html', {'store': store, 'songs': songs, 'url1': url1, 'url2': url2, 'pk': pk})
@@ -59,8 +59,9 @@ def order_song(request, pk):
         print('-----------------------------')
 
         if title and singer: # and message:
-            Song.objects.create(store=store, title=title, singer=singer, message=message)
-            return redirect('order_completed', pk=store.pk)
+            song = Song.objects.create(store=store, title=title, singer=singer, message=message)
+            song.save()
+            return redirect('order_completed', pk=song.pk)
         else:
             print("Wrong Field Values")
             return render(request, 'main/guest-request-start-window.html')
@@ -68,8 +69,8 @@ def order_song(request, pk):
 
 
 def order_completed(request, pk):
-    store = get_object_or_404(Store, pk=pk)
-    return render(request, 'main/guest-request-end-window.html', {'store': store})
+    song = get_object_or_404(Song, pk=pk)
+    return render(request, 'main/guest-request-end-window.html', {'song': song})
 
 
 def play_song(request, pk):
@@ -104,14 +105,10 @@ def restore_one(request, pk):
 def set_settings(request, pk):
     store = get_object_or_404(Store, pk=pk)
     #if request.method=='POST':
-    delay_time = request.POST.get('delay')
-    music_site = request.POST.get('site')
-    period_order = request.POST.get('reset_list')
-    period_complete = request.POST.get('played')
-    # delay_time = request.POST.get('delay_time')
-    # music_site = request.POST.get('music_site')
-    # period_order = request.POST.get('period_order')
-    # period_complete = request.POST.get('period_complete')
+    delay_time = request.POST.get('delay_time')
+    music_site = request.POST.get('music_site')
+    period_order = request.POST.get('period_order')
+    period_complete = request.POST.get('period_complete')
 
     print('=-=-=--=-=-=-=--=-=-=-=--=-=-=-=--=-=-=-=--=')
     print(delay_time)

@@ -16,12 +16,16 @@
   <form method="POST" class="song-form" >{% csrf_token %}
       <div class="input-element">
         <div class="title left">가 수</div>
-        <input type="text" id="artist"placeholder="가수명을 입력하세요." name="singer">
+          <div>
+            <input type="text" id="artist"placeholder="가수명을 입력하세요." name="singer">
+          </div>
       </div>
 
       <div class="input-element">
         <div class="title left">노래제목</div>
-        <input type="text" id="title" placeholder="노래제목을 입력하세요." name="title">
+          <div>
+            <input type="text" id="title" placeholder="노래제목을 입력하세요." name="title">
+          </div>
       </div>
 
       <div class="row">
