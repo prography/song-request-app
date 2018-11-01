@@ -2,3 +2,5 @@ myvenv
 migrations
 .idea
 node_modules
+.python-version
+*.sqlite3

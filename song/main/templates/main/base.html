@@ -29,42 +29,42 @@
 
   <div class="modal-background hide">
       <button class="modal-close" id="close_modal"><img src="{% static 'images/close.png'%}"></button>
-      <!-- <form method="POST" action="{% url 'main:store_set' 1 %}"> -->
-        {% csrf_token %}
-        <div class="modal">
-          <div class="button-wrap">
-            <div class="section-title">예상소요시간</div>
-            <button class="est-time text-btn selected" name="delay" value="30">30분</button>
-            <button class="est-time text-btn" name="delay" value="60">60분</button>
-          </div>
-          <div class="button-wrap">
-            <div class="section-title">검색 사이트</div>
-            <button class="searching-site img-btn melon selected" name="site" value="1"></button>
-            <button class="searching-site img-btn genie" name="site" value="2"></button>
-            <button class="searching-site img-btn bugs" name="site" value="3"></button>
-          </div>
-          <div class="button-wrap">
+        
+    <div class="modal">
+        <div class="button-wrap">
+        <div class="section-title">예상소요시간</div>
+            <button class="est-time text-btn {% if store.delay == 30 %}selected{% endif %}" type="button" value="30" >30분</button>
+            <button class="est-time text-btn {% if store.delay == 60 %}selected{% endif %}" type="button" value="60">60분</button>
+        </div>
+        <div class="button-wrap">
+        <div class="section-title">검색 사이트</div>
+            {% for a, b in store.TYPE1 %}
+                <button type="button" class="searching-site img-btn {{ b }} {% if store.site == a %}selected{% endif %}" value="{{ a }}"></button>
+            {% endfor %}
+        </div>
+        <div class="button-wrap">
             <div class="section-title">초기화 시간</div>
             <div class="subtitle">신청 플레이리스트</div>
-            <button class="req-init-time text-btn selected" name="reset_list" value="2">2시간</button>
-            <button class="req-init-time text-btn" name="reset_list" value="4">4시간</button>
-            <button class="req-init-time text-btn" name="reset_list" value="6">6시간</button>
-    
+            <button type="button" class="req-init-time text-btn {% if store.reset_list == 2 %}selected{% endif %}" value="2">2시간</button>
+            <button type="button" class="req-init-time text-btn {% if store.reset_list == 4 %}selected{% endif %}" value="4">4시간</button>
+            <button type="button" class="req-init-time text-btn {% if store.reset_list == 6 %}selected{% endif %}"  value="6">6시간</button>
+
             <div class="subtitle">완료 플레이리스트</div>
-            <button class="finished-init-time text-btn selected" name="played" value="2">2시간</button>
-            <button class="finished-init-time text-btn" name="played" value="4">4시간</button>
-            <button class="finished-init-time text-btn" name="played" value="6">6시간</button>
-          </div>
-          <button id = "fake_save" class="save" type="submit">저 &nbsp;장</button>
-          <form id = "setting_form">
-              <input type="hidden" id="est_time" name="est_time" value="0">
-              <input type="hidden" id="searching_site" name="searching_site" value="0">
-              <input type="hidden" id="req_init_time" name="req_init_time" value="0">
-              <input type="hidden" id="finished_init_time" name="finished_init_time" value="0">
-              <button class="save" type="submit">저 &nbsp;장</button>
-          </form>
+            <button type="button" class="finished-init-time text-btn {% if store.reset_played == 2 %}selected{% endif %}" value="2">2시간</button>
+            <button type="button" class="finished-init-time text-btn {% if store.reset_played == 4 %}selected{% endif %}" value="4">4시간</button>
+            <button type="button" class="finished-init-time text-btn {% if store.reset_played == 6 %}selected{% endif %}" value="6">6시간</button>
         </div>
-      <!-- </form> -->
+        <button id = "fake_save" class="save" type="submit">저 &nbsp;장</button>
+
+        <form id = "setting_form" style = "display:block" method="POST" action="{% url 'main:store_set' 1 %}">
+            {% csrf_token %}  
+            <input type="hidden" id="est_time" name="delay" value="{{ store.delay }}">
+            <input type="hidden" id="searching_site" name="site" value="{{ store.site }}">
+            <input type="hidden" id="req_init_time" name="reset_list" value="{{ store.reset_list }}">
+            <input type="hidden" id="finished_init_time" name="reset_played" value="{{ store.reset_played }}">
+            <button class="save" type="submit">저 &nbsp;장</button>
+        </form>
+    </div>
   </div>
 </body>
 <footer>

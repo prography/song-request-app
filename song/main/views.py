@@ -29,7 +29,7 @@ def store_index(request, store_id):
         song.filter(played=False).update(deleted=True)
 
     if one_store.reset_played != 0:
-        time = odatetime.datetime.now() - datetime.timedelta(hours=one_store.reset_played)
+        time = datetime.datetime.now() - datetime.timedelta(hours=one_store.reset_played)
         song = one_store.song_set.filter(order_time__lte=time)
         song.filter(played=True).update(deleted=True)
 
@@ -67,7 +67,7 @@ def store_set(request, store_id):
     one_store.delay = int(request.POST.get('delay'))
     one_store.site = request.POST.get('site')
     one_store.reset_list = int(request.POST.get('reset_list'))
-    one_store.reset_played = int(request.POST.get('played'))
+    one_store.reset_played = int(request.POST.get('reset_played'))
 
     one_store.save() 
 
